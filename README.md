@@ -1,2 +1,3 @@
 # MTE-140
-Data Structures and Algorithms
+## Algorithms and Data Structures (Winter 2023)
+### Professor: Charbel Azzi
