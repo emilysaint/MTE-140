@@ -1,0 +1,189 @@
+#include <iostream>
+#include <namespace>
+
+
+	
+for ( i=54; i == 74; i+=2 )
+
+
+for ( i=100; i<=110; ++i )
+
+
+for ( i=100; i>80; i-=2 )
+
+
+for ( i= -100; i > -67; i+=3 )
+
+
+int m = 0;
+int n = 0;
+for ( m = 10, n = 10; m < 20 && n > 2; m++, n-- )
+    cout << " m " << m << " n " << n << endl;
+cout << endl;
+
+#include <iostream>
+using namespace std;
+void WhatIsHappening( int );
+int main()
+{
+    WhatIsHappening (54321);
+    cout << endl;
+    system("PAUSE");
+    return 1;
+}
+void WhatIsHappening ( int a )
+{
+    if ( a/10 )
+        WhatIsHappening (a/10);
+    cout << ( a%10 ) << "*";
+
+
+    
+}#include <iostream>
+using namespace std;
+void WhatIsHappening( int );
+int main()
+{
+    WhatIsHappening (54321);
+    cout << endl;
+    system("PAUSE");
+    return 1;
+}
+void WhatIsHappening ( int a )
+{
+    if ( a/10 )
+        WhatIsHappening (a/10);
+    cout << ( a%10 ) << "*";
+}
+5*4*3*2*1*
+sh: 1: PAUSE: not found
+
+///////
+
+Question 1 (12.25 points) 
+Saved
+Which for loop will iterate exactly 11 times?
+
+Question 1 options:
+
+for ( i=54; i == 74; i+=2 )
+
+
+for ( i=100; i<=110; ++i )
+
+
+for ( i=100; i>80; i-=2 )
+
+
+for ( i= -100; i > -67; i+=3 )
+
+Question 2 (12.25 points) S
+Saved
+Determine the output. Assume all code is compliable. (Make sure to write the exact answer, Case sensitive.)
+
+int a = 5;
+int b = 8;
+int c = 7;
+if ( a < 4 )
+    cout << "Nirvana" << endl;
+else if ( a <= 6 && c >= 8 )
+    cout << "Pearl Jam" << endl;
+else if ( a >= 5 || b < 8 )
+    cout << "Red Hot Chili Peppers" << endl;
+else if ( a < 10 && b > 0 && c == 7 )
+    cout << "Smashing Pumpkins" << endl;
+else if ( b == 8 )
+    cout << "Soundgarden" << endl;
+else
+    cout << "Green Day" << endl;
+Question 2 options:
+Red Hot Chili Peppers
+Question 3 (12.25 points) 
+Saved
+Determine the output. Assume all code is compliable. (Make sure to add necessary space(s) and new line(s) in your answer)
+
+int m = 0;
+int n = 0;
+for ( m = 10, n = 10; m < 20 && n > 2; m++, n-- )
+    cout << " m " << m << " n " << n << endl;
+cout << endl;
+Question 3 options:
+m 10 n 10
+m 11 n 9
+m 12 n 8
+m 13 n 7
+m 14 n 6
+m 15 n 5
+m 16 n 4
+m 17 n 3
+Question 4 (12.25 points) 
+Saved
+Determine the output. Assume all code is compilable.
+
+#include <iostream>
+using namespace std;
+void WhatIsHappening( int );
+int main()
+{
+    WhatIsHappening (54321);
+    cout << endl;
+    system("PAUSE");
+    return 1;
+}
+void WhatIsHappening ( int a )
+{
+    if ( a/10 )
+        WhatIsHappening (a/10);
+    cout << ( a%10 ) << "*";
+}
+Question 4 options:
+5*4*3*2*1*
+
+PAUSE
+Question 5 (12.25 points) 
+Saved
+One kibibyte equals to how many bits? (Typically used for computer memory and storage, kibibyte (KiB) is 1,024 bytes (IEC standard). One gibibyte(1 GiB) is 1,024 MiB)
+
+Just write the exact number without any suffixes or  prefixes.
+
+Question 5 options:
+1,024
+Question 6 (12.25 points) 
+Saved
+What will be the output of this code?
+
+#include <iostream>
+int main()
+{
+    int a = 2147483647;
+    a++;
+    std::cout << a;
+}
+Question 6 options:
+-2147483648
+Question 7 (12.25 points) 
+Saved
+What will be the output of this code?
+
+#include <iostream>
+int x = 10;
+int main()
+{
+    x = 100;
+    for (int i = 0; i < 3; i++){
+        int x;
+        x = i;
+        std::cout << x << ", ";
+    }
+    std::cout << x;
+Question 7 options:
+0, 1, 2, 100
+Question 8 (12.25 points) 
+Saved
+The following code has an error. How to correct it?
+
+#include <iostream>
+int main() {
+    cout << "Hello, World!" ;
+    return 0;
+}
