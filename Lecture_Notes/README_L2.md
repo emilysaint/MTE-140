@@ -135,4 +135,4 @@ Goal: Creating memory allocations
 
 ## Conclusion
 
-..NA
+..NA..
