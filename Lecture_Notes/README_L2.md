@@ -112,7 +112,7 @@ Data structures are main components of creatuon quick and oiweful algoritjm and 
 <br>
 
 ## Types of Data Structures
-![types_of_datastructures.JPG](types_of_datastructures.JPG)
+![L2_types_of_datastructures.JPG](Screenshots/L2_types_of_datastructures.JPG)
 Goal: Creating memory allocations
 
 <br>

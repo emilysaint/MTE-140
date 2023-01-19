@@ -2,6 +2,12 @@
 # C++ Implementation of Pointers
 Jan 19, 2023
 
+## To Dos
+- Make sure to understand pointers
+- Lab
+
+<br>
+
 Classes and ojects and DS Implementations
 
 <br>
@@ -127,6 +133,48 @@ Output
 
 <br>
 
+## Ex 2 Copying Pointers
+pointer always points to the adress
+![L3_pointers_ex2.jpg](Screenshots/L3_pointers_ex2.jpg)
+
+<br>
+
+## Pointers to Pointers (I dont understand)
+Since a pointer itself is stored somewhere in the memory its also hat its own memory address
+```
+int iv1 = 25
+// ip1 holds the address of x 
+int *ip1 = &iv1;
+// ip2 holds the adress of io1 (ip1 its ownadres) ip2 is acturally declared **ip2 bc it hold the address of a pointer that holds the adress of another odject
+int *ip2 = &ip1; 
+```
+ip2 is a ponter to a pointer (**)
+```
+int **ip2; 
+ip2 = &ip1; 
+```
+![L3_pointers_to_pointers.JPG](Screenshots/L3_pointers_to_pointers.JPG)
+
+<br>
+
+## Ex 2.b (Make sure to understand) Rewrite code
+Main code
+![L3_ex2.b_img1_.JPG](Screenshots/L3_ex2.b_img1_.JPG)
+Output
+![L3_ex2.b_img2_.JPG](Screenshots/L3_ex2.b_img2_.JPG)
+edit!! ..nA...
+
+terminating code resets
+
+<br>
+
+## Why do we use Pointers?
+- support datda - linked lists
+- function manipulation to the input var
+- direct memory access and manipulation
+
+<br>
+
 ## Questions
 - classes refresher
 - structure of creating a class
@@ -137,5 +185,4 @@ Output
     - set at 100 or add untill 100 etc?
     - do we have to add a return 0 in all main
     - struct
-- Dynamic memory allocation
-
+- Dynamic memory vs static memory allocation
