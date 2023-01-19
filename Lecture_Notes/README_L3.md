@@ -85,17 +85,6 @@ Output
 
 <br>
 
-## Questions
-- classes refresher
-- structure of creating a class
-- public and private uses and otimization
-- header file etc, and cpp organization
-- Ex 1
-    - class question mal prac
-    - set at 100 or add untill 100 etc?
-    - do we have to add a return 0 in all main
-    - struct
-
 ## Pointers
 Definition: is a var that stores the memory address of another var. 
 A pointer "points to" thet vars address
@@ -112,15 +101,41 @@ int *ip;
 
 Address operator "*&*" (address-of-operator
 used to det the adress of a var 
+
+Dereference operator
+acesses the value of
+used to folloe the [pointer to its target
+getting ip to give "25"
+
 ```
 int *ip; 
 int iv1 = 25; 
 ip = &iv1; 
+// print int stored in var
 cout << iv1;
+// print memory address
 cout << ip; 
+// dereferncing operand
+cout << *ip;
 ```
 Output
 ```
 >> 25
 >> 1776
+>> 25
 ```
+
+<br>
+
+## Questions
+- classes refresher
+- structure of creating a class
+- public and private uses and otimization
+- header file etc, and cpp organization
+- Ex 1
+    - class question mal prac
+    - set at 100 or add untill 100 etc?
+    - do we have to add a return 0 in all main
+    - struct
+- Dynamic memory allocation
+
