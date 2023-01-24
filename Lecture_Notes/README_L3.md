@@ -56,13 +56,14 @@ public:
     }
 }
 ```
-In header? in class bad habit - incapsulation
+In header? in class bad habit - encapsulate, to check work, to put bounds on something, hiding info, functions that just call other functions
+
 this is private
 functions go in header
 incapsulations - accesss to everything
 ```
 void CarRecord::addCar(int year, string brand, double price){
-        carinventory[size].year= year; 
+        carinventory[size].year = year; 
         carinventory[size].brand = brand; 
         carinventory[size].price = price; 
         size++; 
@@ -112,6 +113,8 @@ Dereference operator
 acesses the value of
 used to folloe the [pointer to its target
 getting ip to give "25"
+
+**
 
 ```
 int *ip; 
@@ -176,13 +179,50 @@ terminating code resets
 <br>
 
 ## Questions
-- classes refresher
-- structure of creating a class
+- classes refresher / tructure of creating a class
+    - name, parameters
+    - public / private
+    - functions (parameters of vars def in class)
+    - returns
+     
+    - class is named Tea :: Tea()
+        - within scope
+        - 1 st Tea is class in the header file
+        - 2 nd Tea is the mthd that constructor(creates) instance of tea (tea1, tea2) 
+
+    - instance of the class
+        - tea1::tea(parameters)
+
 - public and private uses and otimization
+    - public used in other files
+    - private: in class or friend (list of clasess that are alowed to access ur private stuff (within class))
+
 - header file etc, and cpp organization
+    - header clasess, functions
+    - cpp call funcs inside class and disp ans
+
 - Ex 1
     - class question mal prac
     - set at 100 or add untill 100 etc?
-    - do we have to add a return 0 in all main
+        - set size of array 
+        - vector if nededs
+    - do we have to add a return 0 in all main??
     - struct
+        - simple class that just have vars, used to pass through vars, must be public
 - Dynamic memory vs static memory allocation
+    - Dyn mem: num bytes on heap (not hardware), storing in specific place. Get rid later. 
+    - stack opp of heap, gets out of scope disapears
+    - malloc
+- ++b/c++
+Does change vales
+    - 3++ = 4, but ret previous val
+    - ++3 = 4, but ret previous after
+
+Implicitly and 
+inside class instance inside running on is implicit 
+this
+this means current instant of class
+
+Explicit means self
+
+changing parameters and types
