@@ -1,45 +1,64 @@
-# Lecture 3
-# C++ Implementation of Pointers
+# Lecture 4 - Memory Allocation
 Jan 24, 2023
-
-## To Dos
-- Make sure to understand pointers
-- Lab
 
 <br>
 
-## Comp Memory
+### To Review
+- Memory Space - tom's notes
+- Hex to bin - tom's notes
+
+<br>
+
+|To Do                      |Deliverables               |
+|---------------------------|---------------------------|
+|- Make sure to understand pointers|- Lab|
+
+<br>
+<hr>
+<br>
+
+## Computer Memory
 - Static: allocated by complier in advances
 - Dynamic: controlled by the program execution
 
 <br>
 
-## Memory Allocation
-- memory poll is large but not infinate
-- at the end of the program meomory is reallocated and freeded up
+## Memory Allocation - NA
+- at the star of a program the operating system assigns the progra a memory pool (free space to use)
+- memory pool is large but not infinate
+- at the end of the program meomory is reallocated/de-allocated and freeded up
 
 <br>
 
-## Memory Space
+## Memory Space - NA
 - hexadeci - binary
 - 32 vs 64 bit adress space - differenece in num bit for memory allocation
 
 <br>
 
-## Going from Hex to bin
+## Going from Hex to bin - NA
 ...NA...
 Using ram corresponds to how much memory we can use?
 
 Ox155FFFF is hex
 
+<br>
+
+## Architechture of memory - NA
+![L4_ach_of_mem.JPG](Screenshots\L4_ach_of_mem.JPG)
 
 <br>
 
-## Architechture of memory
-![L4_ach_of_mem.JPG](Screenshots\L4_ach_of_mem.JPG)
-
 ## Static and Dynamic Memory
-...NA...
+- during a program's lifetime, there are two ways to allocate memory spcare to each variable used in the program
+- Static
+    - vars def without new operator
+    - has a lifetime within scope (ie a function)
+    - at end of scope, var is auto destroyed
+    - memory is auto de-allocated for other things in the program to use
+- Dynamic
+    - var def using `new` operator
+    - has a lifetime with entire progran or untill user `delete` to manually de-allocate the memory space
 
 <br >
 

@@ -1,32 +1,45 @@
-# Lecture 3
-# C++ Implementation of Pointers
+# Lecture 3 - C++ Implementation of Pointers
 Jan 19, 2023
 
-## To Dos
-- Make sure to understand pointers
-- Lab
+<br>
+
+### TO REVIEW 
+- Copying Pointers
+- Pointers to Pointers
+    - ex2.b
+- Questions
+- encapsulation
 
 <br>
 
-Classes and ojects and DS Implementations
+|To Do                      |Deliverables               |
+|---------------------------|---------------------------|
+|- Make sure to understand pointers|- Lab|
+
+*Classes and ojects and DS Implementations
 
 <br>
+<hr>
+<br>
 
-## Classes and Objects
-A class reps a kind of oject
-creating instances specific objects
-it has members (attributes) and mths
-an oject represents and indiv and specific item it is an instance of the general class
+## Classes vs Objects
+- Class
+    - reps a kind of oject
+    - template for creating instances specific objects
+    - it has members (attributes) and mthds
+- Object
+    - represents and indiv and specific item 
+    - it is an instance of the general class
 
 <br>
 
 ## Ex 1: Dealer Inventory Practice
 Info needed, make, model, year, 
 
-SD is a group of data intems
-- each car is a data item
-    - diff types, colours  (attributes)
-- each data item has mths to operate on it
+Data structure (SD) is a group of data itms
+- each car is a data item (attributes)
+    - diff types, colours, price, model
+- each data item has mthds to operate on it
     - mthds/functions, add, print, etc
 
 <br>
@@ -34,26 +47,25 @@ SD is a group of data intems
 Struct
 ```ruby
 struct Car{
-    // all members are public by defults
+    # all members are public by defults
     int year; 
     string brand; 
     double price; 
 };
 ```
 Classes
-schould not return anythig
+should not return anyuthing
 ```ruby
 class CarRecord{
-    // all members are private by default
+    # all members are private by default
     Car carinventory[100];
     int size = 0;
 
 public:
-    // no return anything
-    // someone asked about mal practice changes in two places ?
+    # no return anything
+    # someone asked about mal practice changes in two places ?
     void addCar (int year, string, brand, double price);
-    void printAll(); //? void?
-    }
+    void printAll(); #? void?
 }
 ```
 In header? in class bad habit - encapsulate, to check work, to put bounds on something, hiding info, functions that just call other functions
@@ -77,7 +89,7 @@ Main
 ```ruby
 int main(){
     CarRecord inventory;
-    // add car 1
+    #add car 1
     inentort.addCar(2002, "Honda", 1000.00)
     inventory.printAll()
     return 0; 
@@ -100,32 +112,41 @@ A pointer "points to" thet vars address
 <br>
 
 ## General info
-Pointers: can story any data type
+Pointers: can store memory adresses of any type of data
 
 Declaring a pointer with an askterick *
-int *ip; 
+>int *ip; 
 - ip is declared as a pointer to an int var
+- ip holds `a pointer` to the address of the var of type int
 
-Address operator "*&*" (address-of-operator
-used to det the adress of a var 
+<br>
 
-Dereference operator
-acesses the value of
+## Address operator "*&*" (address-of-operator
+used to det the address of a var 
+
+```ruby
+int *ip;
+int iv1 = 25; # static memory
+ip = &iv1; # no assigning contect of the var itseld *ip*, but only it's address
+cout << iv1; # refer to iv1 directly and output 25
+cout << i; # refers to the address of iv1 and outputs an address of 1776
+```
+![adress operator](Screenshots\L3_addres_op.JPG)
+
+<br>
+
+## Dereference operator
+acesses the "*value of*"
 used to folloe the [pointer to its target
 getting ip to give "25"
-
-**
 
 ```ruby
 int *ip; 
 int iv1 = 25; 
-ip = &iv1; 
-// print int stored in var
-cout << iv1;
-// print memory address
-cout << ip; 
-// dereferncing operand
-cout << *ip;
+ip = &iv1;  
+cout << iv1; # refer yto iv1 directly and print int stored in var, which is 25
+cout << ip; # refers to the address of iv1 and print memory address, which is 1776
+cout << *ip; # refer to iv1 indirectly by using the derefferencing operand; ouput value of the address that "ip" is pointing to, which is 25
 ```
 Output
 ```
@@ -144,6 +165,7 @@ pointer always points to the adress
 
 ## Pointers to Pointers (I dont understand)
 Since a pointer itself is stored somewhere in the memory its also hat its own memory address
+
 ```ruby
 int iv1 = 25
 // ip1 holds the address of x 
@@ -151,6 +173,7 @@ int *ip1 = &iv1;
 // ip2 holds the adress of io1 (ip1 its ownadres) ip2 is acturally declared **ip2 bc it hold the address of a pointer that holds the adress of another odject
 int *ip2 = &ip1; 
 ```
+
 ip2 is a ponter to a pointer (**)
 ```ruby
 int **ip2; 
@@ -160,7 +183,8 @@ ip2 = &ip1;
 
 <br>
 
-## Ex 2.b (Make sure to understand) Rewrite code
+## Ex 2.b (Make sure to understand) 
+Rewrite code from Week1_pointer.cpp
 Main code
 ![L3_ex2.b_img1_.JPG](Screenshots/L3_ex2.b_img1_.JPG)
 Output
@@ -177,9 +201,44 @@ terminating code resets
 - direct memory access and manipulation
 
 <br>
+<hr>
+<br>
+
+## Summary
+
+- Class
+    - reps a kind of oject
+    - template for creating instances specific objects
+    - it has members (attributes) and mthds
+- Object
+    - represents and indiv and specific item 
+    - it is an instance of the general class
+- Pointers
+    - Definition: is a var that stores the memory address of another var. 
+    - A pointer "points to" thet vars address
+    - like a storage unit number
+    - can store memory adresses of any type of data
+    - Declaring a pointer with an askterick *
+        - ip is declared as a pointer to an int var
+        - ip holds `a pointer` to the address of the var of type int
+        - >int *ip; 
+- Address operator "*&*"
+    - used to det the address of a var 
+- Dereference operator
+    - acesses the "*value of*"
+    - used to folloe the [pointer to its target
+    - getting ip to give "25"
+- Ex 2 Copying Pointers
+    - pointer always points to the adress
+- Pointers to Pointers (I dont understand)
+    - Since a pointer itself is stored somewhere in the
+    - memory its also hat its own memory address
+    - >int **ip2; 
+
+<br>
 
 ## Questions
-- classes refresher / tructure of creating a class
+- classes refresher / structure of creating a class
     - name, parameters
     - public / private
     - functions (parameters of vars def in class)
@@ -226,3 +285,5 @@ this means current instant of class
 Explicit means self
 
 changing parameters and types
+
+<br>

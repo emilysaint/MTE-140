@@ -1,17 +1,12 @@
-# Lecture 2
+# Lecture 2 - Introduction to Algorithms and Data Structures
 Jan 17, 2023
 
-## To Do
-- Go to office hours
-- rev objects 
+|To Do                      |Deliverables               |
+|---------------------------|---------------------------|
+|- Go to office hours <br>- rev objects|No CS this week <br> Optional Lab 0 (realsed Tues Jan 17, Friday Jan 27)<br> work on it in lab and finich it on own time|
 
 <br>
-
-## Deliverables
-No CS this week
-Optional Lab 0 (realsed Tues Jan 17, Friday Jan 27)
-Work on it in lab and finich it on own time
-
+<hr>
 <br>
 
 ## Arrays vs. Data Structures
@@ -21,43 +16,53 @@ https://www.geeksforgeeks.org/difference-between-structure-and-array-in-c/
 
 <br>
 
-## Definitions
-Algorithimim: a set of steps to accomplish a task
-Computer Science
-
-<br>
-
-..NA...
-
-<br>
-
-## What is an Algoritim?
-- an finite sequence of ambiguous instructuon preforend to achieve a goal or compute a desired result
+## What is an Algorithimim?
+- Algorithimim: a set of steps to accomplish a task
+- an finite sequence of unambiguous instructuon preforend to achieve a goal or compute a desired result
 - each alg is not a soln but a precosely defiend procedure for derive solns
 
 Each alg should specify the following:
 - name and purpose
 - input
-- outpy
-- unambiguouly  ....NA..
+- output
+- unambiguouly specified finite sequences of steps
+- terminaton condition or terminating state (return)
+```ruby
+Algorithim: Name and purpose
+    Input 
+    Output
+    Step 1: do the thing
+    Step 2: do the stuff
+    Return the ans
+```
+
 
 <br>
 
 ## Algorithim Descriptions vs. Pseudocode
-Algorithim is step-by-step procedure ro sole the problem in simple words.
-Pseudocode describle the algorithim in natural languae and mathematical notations
+Algorithim: is step-by-step procedure ro sole the problem in simple words.
+Pseudocode: describes the algorithim in natural languae and mathematical notations
 
 <br>
 
 ## Ex 1: Alg that returns the sum of 1, 2, 3, ..., n
 
+Format of algrithim
 ```ruby
-Format of description
-    Algorithim: Sum of a series 
+Algorithim: Sum of a series 
     Input: an integer *n* (eg, n = 2)
     Output: and interger or a number to store the result
     Step 1: for each integer 1 to n, sum up values in result
     Retrun the answer: display the value of the result
+```
+
+Alternate format of algrithim
+```ruby
+Algorithim : SomeOneToN
+    Input: an integer *n* (e.g. 4)
+    Output: an integer result to store the output. Initiate result to 0
+    Step1: for each integer from 1 to *n*, add their values to result
+    Return the ans: out put the val of result
 ```
 
 Format of pseudocode
@@ -84,6 +89,7 @@ Function: SumOneToN(n)
 <br>
 
 ## Ex 2: Alg to find area of a rectangle
+My ans to format pseudo code
 ```ruby
 Function: find_area(l, w)
     Syntax1: Read the input l and w
@@ -101,13 +107,12 @@ find_area(int l, int w):
 <br>
 
 ## Data Structures
-Algoritms operate on varous data items (eg, int, double, string)
-A data structure is:
-- a coherent organization of related data items for effucuent storate and usage
-- and methods that operate on the data items (to acces, query and update them as quickly and easily)
-Data structures are main components of creatuon quick and oiweful algoritjm and make codes more readable and understandable
+Algoritms operate on varous **data items** (eg, int, double, string)
 
-..NA...
+A data structure is:
+- a coherent organization of related **data items** for efficient storstorage  and usage
+- and **methods** that operate on the data items (to acces, query and update them as quickly and easily)
+Data structures are main components of creation of quick and powerful algorithims, which make code more readable and understandable.
 
 <br>
 
@@ -127,12 +132,30 @@ Goal: Creating memory allocations
 
 ## Object Oriented Programming (C++)
 - Allows a data structure's members to be private
-- mthds (functions) that operate on these data items are inctuded within the data structure
-- useres of the data structure use the public methods to achieve their goals, without accidently affecteing the private dtat items in any bad ways
+- mthds (functions) that operate on these data items are included within the data structure
+- users of the data structure use the public methods to achieve their goals, without accidently affecteing the private data items in any bad ways
 - this is called encapsulation
 
 <br>
+<hr>
+<br>
 
-## Conclusion
+## Summary
+- Algorithimim
+    - is step-by-step procedure to sole the problem in simple words.
+    - operate on various **data items** (eg, int, double, string
+- Pseudocode
+    - describes the algorithim in natural languae and mathematical notations
+- A data structure 
+    - a  organization of related **data items** 
+    -  efficient storage and usage
+- Methods
+    - operate on the data items
 
-..NA..
+<br>
+
+## Questions
+- Arrays vs. Data Structures?
+    - Answer:
+        - Array collection of same data type elements
+        - Structure consisting of elements of different data types
