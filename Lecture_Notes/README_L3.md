@@ -32,7 +32,7 @@ SD is a group of data intems
 <br>
 
 Struct
-```
+```ruby
 struct Car{
     // all members are public by defults
     int year; 
@@ -42,7 +42,7 @@ struct Car{
 ```
 Classes
 schould not return anythig
-```
+```ruby
 class CarRecord{
     // all members are private by default
     Car carinventory[100];
@@ -61,7 +61,7 @@ In header? in class bad habit - encapsulate, to check work, to put bounds on som
 this is private
 functions go in header
 incapsulations - accesss to everything
-```
+```ruby
 void CarRecord::addCar(int year, string brand, double price){
         carinventory[size].year = year; 
         carinventory[size].brand = brand; 
@@ -74,7 +74,7 @@ void CarRecord::printAll(){
 }
 ```
 Main
-```
+```ruby
 int main(){
     CarRecord inventory;
     // add car 1
@@ -85,7 +85,7 @@ int main(){
 ```
 
 Output
-```
+```ruby
 >> Car #0: 2002 Honda, price
 ...
 ```
@@ -116,7 +116,7 @@ getting ip to give "25"
 
 **
 
-```
+```ruby
 int *ip; 
 int iv1 = 25; 
 ip = &iv1; 
@@ -144,7 +144,7 @@ pointer always points to the adress
 
 ## Pointers to Pointers (I dont understand)
 Since a pointer itself is stored somewhere in the memory its also hat its own memory address
-```
+```ruby
 int iv1 = 25
 // ip1 holds the address of x 
 int *ip1 = &iv1;
@@ -152,7 +152,7 @@ int *ip1 = &iv1;
 int *ip2 = &ip1; 
 ```
 ip2 is a ponter to a pointer (**)
-```
+```ruby
 int **ip2; 
 ip2 = &ip1; 
 ```

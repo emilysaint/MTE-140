@@ -45,7 +45,7 @@ Ox155FFFF is hex
 
 ## Ex 1
 
-```
+```ruby
 //return variable 'a' plus 1
 int testFunc1 (int a){ 
     //here, memory is statically allocated to 'a'
@@ -72,7 +72,7 @@ int main() {
 }
 ```
 Output
-```
+```ruby
 >> Function call without input (x):
 Inside function, address of 'a': 0x7ffee62bea1c
 2
@@ -84,7 +84,7 @@ Inside function, adress of 'a': 0x7ffee62bea1c
 <br>
 
 ## The new operator
-```
+```ruby
 int *p; w
 p = new int(17); //init *p to 17
 ```
@@ -93,7 +93,7 @@ Allocate memory with the size of the data type
 return a pinter of the data type
 normally 8bytes
 
-```
+```ruby
 int *p
 p = new int[5]
 
@@ -102,7 +102,7 @@ p = new int[5]
 //5x4 = 10bytes
 ```
 
-```
+```ruby
 int a[3] = {10, 20, 30}; 
 a[0] = 10; 
 a = ?
@@ -110,7 +110,7 @@ cout << a;
 ```
 
 Output
-```
+```ruby
 'memory address of a'
 adress of a[0] pointer
 *a = a[0]
@@ -159,7 +159,7 @@ p = new int(17);//Initializes *p to 17
 ..NA.. what
 soln:
 avoid dangling pointers by immediatelye assign point to NULL after delete
-```
+```ruby
 delete p; 
 p = NULL; 
 

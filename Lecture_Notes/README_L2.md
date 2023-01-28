@@ -51,7 +51,7 @@ Pseudocode describle the algorithim in natural languae and mathematical notation
 
 ## Ex 1: Alg that returns the sum of 1, 2, 3, ..., n
 
-```
+```ruby
 Format of description
     Algorithim: Sum of a series 
     Input: an integer *n* (eg, n = 2)
@@ -61,7 +61,7 @@ Format of description
 ```
 
 Format of pseudocode
-```
+```ruby
 Function (Input)
     Syntax1: Read the input
     Syntax2: Set some math = stuff
@@ -72,7 +72,7 @@ Function (Input)
 ```
 
 Alternate format of pseudocode
-```
+```ruby
 Function: SumOneToN(n)
     Syntax1: Read the input n = 4
     Syntax2: int result = 0
@@ -84,7 +84,7 @@ Function: SumOneToN(n)
 <br>
 
 ## Ex 2: Alg to find area of a rectangle
-```
+```ruby
 Function: find_area(l, w)
     Syntax1: Read the input l and w
     Syntax3: area = l*w
@@ -92,7 +92,7 @@ Function: find_area(l, w)
 ```
 
 Actual Syntax
-```
+```ruby
 find_area(int l, int w):
     area = l*w
     return area
