@@ -30,6 +30,9 @@ Jan 24, 2023
 ...NA...
 Using ram corresponds to how much memory we can use?
 
+Ox155FFFF is hex
+
+
 <br>
 
 ## Architechture of memory
@@ -124,6 +127,13 @@ Static memory doesnt allow you to replace element, yu have to shift everything d
 ## Memory Leaks
 
 the memory will not be automatically released/de-allocated until
+only in heap it will happen 
+not in stack
+
+```
+int *p;     // this is pointing to a memory loc
+p = new int(17);//Initializes *p to 17
+```
 
 ..NA..
 
@@ -179,3 +189,12 @@ if ...NA...
 - memory leaking 
 - del op 
 - constructor- why create default day==1 and :month(monthValue), int main monthValue why is it highlighted=
+
+
+struct - public
+class - private
+
+ Questions
+ passby ref
+ fields                       
+ this                           
