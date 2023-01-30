@@ -157,7 +157,7 @@ Output
 
 <br>
 
-## Ex 2 Copying Pointers
+## Ex 2 Copying Pointers (I dont understand)
 pointer always points to the adress
 ![L3_pointers_ex2.jpg](Screenshots/L3_pointers_ex2.jpg)
 
@@ -167,10 +167,10 @@ pointer always points to the adress
 Since a pointer itself is stored somewhere in the memory its also hat its own memory address
 
 ```ruby
-int iv1 = 25
-// ip1 holds the address of x 
+int iv1 = 25;
+# ip1 holds the address of x 
 int *ip1 = &iv1;
-// ip2 holds the adress of io1 (ip1 its ownadres) ip2 is acturally declared **ip2 bc it hold the address of a pointer that holds the adress of another odject
+# ip2 holds the adress of io1 (ip1 its ownadres) ip2 is acturally declared **ip2 bc it hold the address of a pointer that holds the adress of another odject
 int *ip2 = &ip1; 
 ```
 

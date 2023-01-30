@@ -23,7 +23,7 @@ Jan 24, 2023
 
 <br>
 
-## Memory Allocation - NA
+## Memory Allocation
 - at the star of a program the operating system assigns the progra a memory pool (free space to use)
 - memory pool is large but not infinate
 - at the end of the program meomory is reallocated/de-allocated and freeded up
@@ -31,16 +31,17 @@ Jan 24, 2023
 <br>
 
 ## Memory Space - NA
-- hexadeci - binary
 - 32 vs 64 bit adress space - differenece in num bit for memory allocation
+- numb-bit of address space, there are num-bit available to store each address to there are 2^num-bit possible locations
 
 <br>
 
-## Going from Hex to bin - NA
-...NA...
+## Going from Hex to bin
 Using ram corresponds to how much memory we can use?
 
 Ox155FFFF is hex
+
+![L4_Tom_hex_bin.jpeg](Screenshots\L4_Tom_hex_bin.jpeg)
 
 <br>
 
@@ -52,7 +53,7 @@ Ox155FFFF is hex
 ## Static and Dynamic Memory
 - during a program's lifetime, there are two ways to allocate memory spcare to each variable used in the program
 - Static
-    - vars def without new operator
+    - vars def without `new` operator
     - has a lifetime within scope (ie a function)
     - at end of scope, var is auto destroyed
     - memory is auto de-allocated for other things in the program to use
@@ -65,19 +66,19 @@ Ox155FFFF is hex
 ## Ex 1
 
 ```ruby
-//return variable 'a' plus 1
+# return variable 'a' plus 1
 int testFunc1 (int a){ 
-    //here, memory is statically allocated to 'a'
-    //'a' is a variable within the scope of testFunc1
+    # here, memory is statically allocated to 'a'
+    # 'a' is a variable within the scope of testFunc1
     cout << endl << "Inside function, address of 'a': " << &a << endl;
     a++;
     return a;
 }
-//after the end of this scope, local variables are automatically removed.
-//their memory space is automatically released back to the pool (free for other usage)
+# after the end of this scope, local variables are automatically removed.
+# their memory space is automatically released back to the pool (free for other usage)
 
 int main() { 
-    //main function also has its scope
+    # main function also has its scope
     int x = 1, y = 10; //here, memory is statically allocated to x and y.
     cout << "Before function call: Value of x: "<< x << ". Address of x: " << &x << endl;
     cout << "Before function call: Value of y: "<< y << ". Address of y: " << &y << endl;
@@ -104,21 +105,30 @@ Inside function, adress of 'a': 0x7ffee62bea1c
 
 ## The new operator
 ```ruby
-int *p; w
-p = new int(17); //init *p to 17
+int *p;
+p = new int(17); # init *p to 17
+
+int = *p1; 
+p1 = new int; 
+# without init
+# not recommended
+cout<<*p1;
+# will get whatever was previously left there in the 4 bytes space. Some unknow number 
 ```
 
 Allocate memory with the size of the data type
 return a pinter of the data type
 normally 8bytes
 
+*Attention Memory Leak: the memory will not be automatically released/de-allocated, untill end of the program or user `delete`.
+
 ```ruby
 int *p
 p = new int[5]
 
-//resquest  8bytes to show the size of the array
-//+5size of p
-//5x4 = 10bytes
+# resquest  8bytes to show the size of the array
+# +5size of p
+# 5x4 = 10bytes
 ```
 
 ```ruby
@@ -130,67 +140,119 @@ cout << a;
 
 Output
 ```ruby
-'memory address of a'
+# memory address of a
 adress of a[0] pointer
 *a = a[0]
 
-// only have stored address of element 1 with arrays
-// you cannot get memory adress of next element
-a[1] = 20 // so this doesnt work 
+# only have stored address of element 1 with arrays
+# you cannot get memory adress of next element
+a[1] = 20 # so this doesnt work 
 
 ```
 Static memory doesnt allow you to replace element, yu have to shift everything down and loop through everything. Dynmic memory allows you to add/inset. 
+
 
 <br>
 
 ## Memory Leaks
 
+Memory leak
+- a piece of memory that was previously allocated by a programmer (using `new`) is not properly de-allocated (using `delete`)
+- eventhough that memory is no longer in use by the program, it is still `reserved`
+- without `delete`, no `new` operator can allocate the same address allocated by a previous `new`.
+- If a program has a lot of memory that hasn't been de-allocated, it could slow down the preformance
+- if there is no memory left in the program, it could cause the program to crash
+
 the memory will not be automatically released/de-allocated until
 only in heap it will happen 
 not in stack
 
+```ruby
+int *p; # this is pointing to a memory loc
+p = new int(17); # Initializes *p to 17
 ```
-int *p;     // this is pointing to a memory loc
-p = new int(17);//Initializes *p to 17
-```
-
-..NA..
 
 <br>
 
 ## Delete operator
-- dealocating dyn mem, which means furture new operators will be able to allocate the mem space
+- dealocating dyn mem, which means furture `new` operators will be able to allocate the mem space
 
-```
+```ruby
+int *p;
+p = new int (17);  # init *p to 17
+delete p; # but p still points there and is called a "dangling pointer"
 ```
 
 <br>
 
 ## Dangling pointers
-- dangling pointers is a non-null pointer that points to unallocated memort
-- defere
-```
-```
-
-<br>
-
-## Avoid dangling pointers
-..NA.. what
-soln:
-avoid dangling pointers by immediatelye assign point to NULL after delete
+- dangling pointers is a non-null pointer that points to unallocated memory
+- deferencing a dangling pointer may cause the program to crash
+- avoid dangling pointers by immidiatley assign point to NULL after delete
 ```ruby
-delete p; 
-p = NULL; 
-
-// 0, or nullptr (as c++11)
-if ...NA...
+int *p; 
+p = new int(17);
+delete p; # if p is the de-ref using (*p), this leads to unpredictable results
+p = NULL; # 0 or null ptr. if someone tries tri check p validity later, if(p) = False
 ```
 
 <br>
 
-## COnstructor and destructors
+## Constructor and destructors
 - new operator calls a const for new objects
 - del op calls a destr to be de-allocated the object
+
+Constructors:
+- A special kind of class member function
+    - automatically called when an object of the class is instantiated
+    - must be **public**
+    - if no constructor is defined by the user, the systeme will create a default constructor
+- Difference from other regular member functions
+    - they must have **the same name** as the class
+    - they **cannot return a value; not even void**
+- Advantages
+    - inti some or all member variavles of an object, simply the procedure
+    - add code to validate the entered init value
+    - other actions, ie, print to systen when an object is instantiated
+
+```ruby
+class MonthAndDay { 
+private:
+    int month;
+    int day;
+    void checkDate(); # check if the date is valid.
+public:
+    MonthAndDay(); # overload constructor with no argument condition 
+    # note: no return value not even void
+    MonthAndDay(int month Value); # overload 1 int condition
+    MonthAndDay(int month Value, int dayValue); # overload 2 int condition void output(); # note: require return value such as void
+}
+```
+
+Destructors:
+- Automatically called when an object of the class is **deallocated**
+    - if the memory is *statically* allocated, destructor is called when the object's scope is closed/ended
+    - if the memory is *dynamically* allocated, destructor is called when explicitly `deleted`
+- Destructor must be named the same as the class
+    - with a **"~" (tiled)** sign preceding its name
+    - each class has only one destructor
+    ```ruby
+    MonthAndDay(); # constructor
+    ~MonthAndDay(); # destructor
+    ```
+```ruby
+#include <iostream> 
+using namespace std;
+int* testFunc3 (int a){
+# return a pointer
+int *p1;
+# p1 is a local variable
+p1 = new int(a); # the address returned by new will not be automatically collected after the end of this function scope
+# here, new operator allocates the memory dynamically/manually
+cout << "Inside testFunc3, int value: "<< *p1 << " is allocated memory at address: " << p1 << endl;
+return p1; # here return the pointer, i.e., return the memory address value
+}
+```
 
 <br>
 
