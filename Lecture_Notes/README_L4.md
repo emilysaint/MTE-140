@@ -255,27 +255,111 @@ return p1; # here return the pointer, i.e., return the memory address value
 ```
 
 <br>
+<hr>
+<br>
 
-## Constructors
-- a kind of class member function
-    - automatically called
+## Summary
+<br>
 
+### Memory Allocation
+- at the star of a program the operating system assigns the progra a memory pool (free space to use)
+- memory pool is large but not infinate
+- at the end of the program meomory is reallocated/de-allocated and freeded up
+
+<br>
+
+### Going from Hex to bin
+![L4_Tom_hex_bin.jpeg](Screenshots\L4_Tom_hex_bin.jpeg)
+
+<br>
+
+### Architechture of memory - NA
+![L4_ach_of_mem.JPG](Screenshots\L4_ach_of_mem.JPG)
+
+<br>
+
+### Static and Dynamic Memory
+- during a program's lifetime, there are two ways to allocate memory spcare to each variable used in the program
+- Static
+    - has a lifetime within scope (ie a function)
+    - at end of scope, var is auto destroyed
+    - memory is auto de-allocated for other things in the program to use
+- Dynamic
+    - var def using `new` operator
+    - has a lifetime with entire progran or untill user `delete` to manually de-allocate the memory space
+    - controlled by the program execution
+
+<br>
+
+### The new operator
+- Allocate memory with the size of the data type
+return a pinter of the data type
+- *Attention Memory Leak: the memory will not be automatically released/de-allocated, untill end of the program or user `delete`.
+- Static memory doesnt allow you to replace element, yu have to shift everything down and loop through everything. Dynmic memory allows you to add/inset. 
+
+<br>
+
+### Memory Leaks
+- a piece of memory that was previously allocated by a programmer (using `new`) is not properly de-allocated (using `delete`)
+- eventhough that memory is no longer in use by the program, it is still `reserved`
+- without `delete`, no `new` operator can allocate the same address allocated by a previous `new`.
+- only in heap it will happen 
+- not in stack
+
+<br>
+
+### Delete operator
+- dealocating dyn mem, which means furture `new` operators will be able to allocate the mem space
+
+<br>
+
+### Dangling pointers
+- dangling pointers is a non-null pointer that points to unallocated memory
+- avoid dangling pointers by immidiatley assign point to NULL after delete
+
+<br>
+
+### Constructor and destructors
+- new operator calls a const for new objects
+- del op calls a destr to be de-allocated the object
+
+Constructors:
+- A special kind of class member function
+    - automatically called when an object of the class is instantiated
+    - must be **public**
+    - if no constructor is defined by the user, the systeme will create a default constructor
+- Difference from other regular member functions
+    - they must have **the same name** as the class
+    - they **cannot return a value; not even void**
+
+Destructors:
+- Automatically called when an object of the class is **deallocated**
+    - if the memory is *statically* allocated, destructor is called when the object's scope is closed/ended
+    - if the memory is *dynamically* allocated, destructor is called when explicitly `deleted`
+- Destructor must be named the same as the class
+    - with a **"~" (tiled)** sign preceding its name
+    - each class has only one destructor
+
+<br>
 
 ## Questions
+I understand:
 - how to count bits of x16, 1-9 then a-g
-- whats the correlation between ram, hex, memory allocation, 32/64
 - dyn mem can only be allocated by pointers
 - dyn mem inc size of list 
 - how to init new mem
 - memory leaking 
 - del op 
+- struct - public
+- class - private
+
+I don't understand:
+- whats the correlation between ram, hex, memory allocation, 32/64
 - constructor- why create default day==1 and :month(monthValue), int main monthValue why is it highlighted=
 
+<br>
 
-struct - public
-class - private
-
- Questions
- passby ref
- fields                       
- this                           
+## To Review
+- passby ref
+- fields                       
+- this                           
