@@ -11,7 +11,7 @@ Jan 24, 2023
 
 |To Do                      |Deliverables               |
 |---------------------------|---------------------------|
-|- Make sure to understand pointers|- Lab|
+|- Make sure to understand pointers <br> - LRN  |- Lab <br> - start lab|
 
 <br>
 <hr>
