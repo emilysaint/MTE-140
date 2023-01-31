@@ -44,10 +44,11 @@ Jan 31, 2023
 
 ## List ADT **Insert**
 `void insert(DataType value, int position):`
-1. check special cases: position zero, <mark> first , last
+1. check special cases: position zero, <mark> first</mark>, last
 2. inserts val into the list at pos and incs size by 1
-3. <mark> aft inserting val at pos, data is shifted towards the list end by one
+3. aft inserting val at pos, data is shifted towards the list end by one
 4. if size reaches the max cap - the list may be inc to accommodate new elems
+5. alt, use a ptr to a node as an int. node should not previously belong to the list
 
 <br>
 
@@ -55,8 +56,8 @@ Jan 31, 2023
 `void remove(int position)`
 1. check special cases: position zero, first, last
 2. removes data from the list at a given pos and decs size by 1
-3. <mark> aft inserting the val, all of exisiting data aft postion is moved towards the list front by one
-4. <mark> alternatively, use a ptr to a Node as input, Node should not previously belong to list
+3. this is with regular lists: aft inserting the val, all of exisiting data aft postion is moved towards the list front by one
+4. only using linked lists: <mark> alternatively, use a ptr to a Node as input, Node should not previously belong to list
 
 <br>
 
@@ -90,6 +91,11 @@ there are two types
 <br>
 
 ## Squential List (Array) Implementation
+<mark style="background-color:#cc7e78;"> 
+when init `new` is technically a pointer
+array is pointer
+</mark>
+
 - **Allocate** a <mark> contiguos <mark> block of memory to store the data, and an index is available to provide direct acess to rand data items
 - keep in mind: STL a version of sequential list is provided as the <mark> < vector > library
 - characterized as 4 main members
