@@ -144,11 +144,19 @@ Steps:
     - <mark> delete and free the required node at position
 
 Example
+
+<mark style="background-color:#cc7e78;"> 
+How does it know head, where def
+pointing by reference
+how are you looping are you looping one behind the acc one you want
+If you had made current a ptr then it would be dangling too 
+</mark>
+
 ```ruby
 void LinkedList::remove(int position) {
     # step 1
     if(position == 0){
-        Node *temp = head;
+        Node *temp = head; # NEED A TEMP VAR OR WHOLE ARRA WILL BE LOST
         head = head->next;
         delete temp;
         temp = nullptr;
@@ -156,7 +164,7 @@ void LinkedList::remove(int position) {
     }
     # step 2
     Node *previous = head;
-    Node *current = head->next;
+    Node *current = head->next; # CURRENT IS THE TEMP VAL 
     int i = 1;
     while (i < position) {
         if (current->next == nullptr) {
@@ -168,7 +176,7 @@ void LinkedList::remove(int position) {
     }
     # step 3
     previous->next = current->next;
-    delete current;
+    delete current; # DANGLING PTR
     current = nullptr;
 }
 ```
@@ -216,6 +224,35 @@ doubly
 
 circularly
 - ptr in the last node pts back to the first node
+
+
+<br>
+
+## Inclass Example
+<mark style="background-color:#cc7e78;"> 
+Draw example <br>
+is interpretation correct <br>
+someone asked how you would loop in rev
+</mark>
+
+```ruby
+int main(){
+    LinkedList myList;
+    # object.comand(value, index)
+    myList.Insert(2, 0);
+    myList.insert(4, 1);
+    myList.insert(1, 0);
+    myList.insert(5, 3);
+    myList.insert(3, 2);
+    myList.print();
+    myList.replace(2, 33);
+    # myList.print();
+    myList.remove(3):
+    myList.remove(0);
+    # myList.print();
+    return 0;
+}
+```
 
 
 <br>

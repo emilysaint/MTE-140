@@ -1,9 +1,15 @@
-# Lecture 5 - Sequential and Linked Lists Implementation
+# Lecture 7 - Sequential and Linked Lists Implementation
 Jan 31, 2023
 
 |To Do                      |Deliverables               |
 |---------------------------|---------------------------|
 |- Make sure to understand pointers <br> - LRN  |- Lab <br> - start lab|
+
+### General notes
+- Coding is a means to end
+- Exam is more comprehesion
+- What are his exams like
+- Suggested problems, sample exams, useful materials =
 
 <br>
 <hr>
@@ -183,7 +189,7 @@ Its implementation should keep track of the following:
 - **tail (or last)** pointer to the end of the list; set to NULL at start
 - **size** the number of inserted elements in the list; <mark> set to 0 at start
 
-![L7_doubly_linked_list_implementation.jpg](Screenshots\L7_doubly_linked_list_implementation.jpg)
+    ![L7_doubly_linked_list_implementation.jpg](Screenshots\L7_doubly_linked_list_implementation.jpg)
 
 <br>
 
@@ -194,7 +200,7 @@ Its implementation should keep track of the following:
     - just need account for the previous address (pointer)
     - move in 2 ways using them
 
-![L7_doubly_linked_list_implementation.jpg](Screenshots\L7_doubly_linked_list_implementation.)
+    ![L7_doubly_linked_list_insert.jpg](Screenshots\L7_doubly_linked_list_insert.jpg)
     
 Example: <mark> Four insert operations are applied to an empty doubly linked list
 ```ruby
@@ -212,7 +218,7 @@ insert('k',1)
 - Implemented similarly to singly linked list
     - <mark> it iterates in 2 ways through the list until position and removing that node
 
-![L7_doubly_linked_list_implementation.jpg](Screenshots\L7_doubly_linked_list_implementation.)
+    ![L7_doubly_linked_list_delete.jpg](Screenshots\L7_doubly_linked_list_delete.jpg)
 
 
 Example: two remove operations on the previous example
@@ -231,7 +237,7 @@ remove (0)
 - `DataType select(int position)` Implemented by iterating (in 2 ways instead) through the list until position
 - `int size()` Implemented by simply returning the size val
 
-![L7_doubly_linked_list_implementation.jpg](Screenshots\L7_doubly_linked_list_implementation.)
+    ![L7_doubly_linked_list_replace.jpg](Screenshots\L7_doubly_linked_list_replace.jpg)
 
 <br>
 
