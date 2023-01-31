@@ -55,17 +55,12 @@ test.cpp
 ```
 
 For this part of assignment:
-
-<mark style="background-color:#7f9977;"> 
-
-- <mark style="background-color:#7f9977;">  you only need to modify sequential-list.cpp. </mark> 
+- <mark style="background-color:#7f9977;"> you only need to modify sequential-list.cpp. </mark> 
 - <mark style="background-color:#7f9977;"> You can design your own test case and code in test.cpp. </mark> 
     - <mark style="background-color:#7f9977;"> It is optional and we will not grade this file. </mark>  
     - <mark style="background-color:#7f9977;"> I have decided to release the test.cpp code we will use for this time only to help you design your own test cases based on it. </mark> 
     - <mark style="background-color:#7f9977;"> Later Lab parts will not have the test codes provided as you will have to build your own to make sure your code works </mark> 
     - <mark style="background-color:#7f9977;"> You can use the same procedures in the Optional Lab Assignment 0 to pull, edit, build, commit, and push your repo. </mark> 
-    
-</mark> 
 
 <br>
 
