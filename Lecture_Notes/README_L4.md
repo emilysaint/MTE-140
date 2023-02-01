@@ -11,33 +11,13 @@ Jan 24, 2023
 
 |To Do                      |Deliverables               |
 |---------------------------|---------------------------|
-|- Make sure to understand pointers <br> - LRN  |- Lab <br> - start lab|
-
-<br>
-<hr>
-<br>
-
-## Computer Memory
-- Static: allocated by complier in advances
-- Dynamic: controlled by the program execution
-
-<br>
-
-## Memory Allocation
-- at the star of a program the operating system assigns the progra a memory pool (free space to use)
-- memory pool is large but not infinate
-- at the end of the program meomory is reallocated/de-allocated and freeded up
-
-<br>
-
-## Memory Space - NA
-- 32 vs 64 bit adress space - differenece in num bit for memory allocation
-- numb-bit of address space, there are num-bit available to store each address to there are 2^num-bit possible locations
-
-<br>
 
 ## Going from Hex to bin
 Using ram corresponds to how much memory we can use?
+
+memory of comp = ram (used while running programs) + hard drive
+cpu executes instructions
+gpu executes diff instructs (graphics)
 
 Ox155FFFF is hex
 
@@ -215,17 +195,21 @@ Constructors:
     - add code to validate the entered init value
     - other actions, ie, print to systen when an object is instantiated
 
-```ruby
+```cpp
 class MonthAndDay { 
 private:
     int month;
     int day;
     void checkDate(); # check if the date is valid.
 public:
-    MonthAndDay(); # overload constructor with no argument condition 
+    // constructors all seperate to change, we need get/set
+    MonthAndDay(); // overload constructor with no argument condition 
     # note: no return value not even void
-    MonthAndDay(int month Value); # overload 1 int condition
-    MonthAndDay(int month Value, int dayValue); # overload 2 int condition void output(); # note: require return value such as void
+    MonthAndDay(int month Value); // overload 1 int condition
+    MonthAndDay(int month Value, int dayValue); // overload 2 
+    int condition;
+    void output(); // note: require return value such as void
+    ~MonthAndDay(); // destructor
 }
 ```
 
@@ -236,9 +220,9 @@ Destructors:
 - Destructor must be named the same as the class
     - with a **"~" (tiled)** sign preceding its name
     - each class has only one destructor
-    ```ruby
-    MonthAndDay(); # constructor
-    ~MonthAndDay(); # destructor
+    ```cpp
+    MonthAndDay(); // constructor
+    ~MonthAndDay(); // destructor
     ```
 ```ruby
 #include <iostream> 

@@ -31,7 +31,9 @@ Jan 26, 2023
 - grade school multiplication
     - how efficient is this algorithim
     - how many single-didgit operations
-![L5_bigO.jpg](Screenshots\L5_bigO.jpg)
+
+    ![L5_bigO.jpg](Screenshots\L5_bigO.jpg)
+
 - Big O notaton
     - describes the completity of your code using algebraic terms
     the running time/number of operations that's independent of hardware, programming language, etc
@@ -115,19 +117,21 @@ Train analogy
 <br>
 
 ## Ex 1 - Linked list structure
-```ruby
+```cpp
 struct LinkedListNode {
+    // defined here
+    int data; # assume all elements are ints 
+    LinkedListNode *next; # default constructor without parameters
+    LinkedListNode(): data(0), hext (NULL) {}; # constructor
+    LinkedListNode(int x): data(x), next (NULL) {};
+    # ":" is the constructor member initializer list used to
+    # initialize the class members data and next for this constructor
 };
-int data; # assume all elements are ints 
-LinkedListNode *next; # default constructor without parameters
-LinkedListNode(): data(0), hext (NULL) {}; # constructor
-inkedListNode(int x): data(x), next (NULL) {};
-# ":" is the constructor member initializer list used to
-# initialize the class members data and next for this constructor
 ```
-```ruby
+```cpp
 int main(){
     LinkedListNode *head = new LinkedListNode(); 
+    // (*head).next 
     head->data = 10; 
     head->next = new LinkedListNode(); 
     head->next->data = 3; 
@@ -140,7 +144,7 @@ int main(){
 }
 ```
 Removing a node
-```ruby
+```cpp
 # Removing first node
 Node *temp = NULL; 
 temp = head; 

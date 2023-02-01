@@ -45,7 +45,7 @@ Data structure (SD) is a group of data itms
 <br>
 
 Struct
-```ruby
+```cpp
 struct Car{
     # all members are public by defults
     int year; 
@@ -55,7 +55,7 @@ struct Car{
 ```
 Classes
 should not return anyuthing
-```ruby
+```cpp
 class CarRecord{
     # all members are private by default
     Car carinventory[100];
@@ -73,7 +73,7 @@ In header? in class bad habit - encapsulate, to check work, to put bounds on som
 this is private
 functions go in header
 incapsulations - accesss to everything
-```ruby
+```cpp
 void CarRecord::addCar(int year, string brand, double price){
         carinventory[size].year = year; 
         carinventory[size].brand = brand; 
@@ -86,7 +86,7 @@ void CarRecord::printAll(){
 }
 ```
 Main
-```ruby
+```cpp
 int main(){
     CarRecord inventory;
     #add car 1
@@ -97,7 +97,7 @@ int main(){
 ```
 
 Output
-```ruby
+```cpp
 >> Car #0: 2002 Honda, price
 ...
 ```
@@ -124,7 +124,7 @@ Declaring a pointer with an askterick *
 ## Address operator "*&*" (address-of-operator
 used to det the address of a var 
 
-```ruby
+```cpp
 int *ip;
 int iv1 = 25; # static memory
 ip = &iv1; # no assigning contect of the var itseld *ip*, but only it's address
@@ -140,7 +140,7 @@ acesses the "*value of*"
 used to folloe the [pointer to its target
 getting ip to give "25"
 
-```ruby
+```cpp
 int *ip; 
 int iv1 = 25; 
 ip = &iv1;  
@@ -149,7 +149,7 @@ cout << ip; # refers to the address of iv1 and print memory address, which is 17
 cout << *ip; # refer to iv1 indirectly by using the derefferencing operand; ouput value of the address that "ip" is pointing to, which is 25
 ```
 Output
-```
+```cpp
 >> 25
 >> 1776
 >> 25
@@ -161,12 +161,21 @@ Output
 pointer always points to the adress
 ![L3_pointers_ex2.jpg](Screenshots/L3_pointers_ex2.jpg)
 
+```cpp 
+int iv1 = 25; 
+int iv2 = 30;
+int *ip1 = &iv1;  
+int *ip2 = &iv2; 
+*ip1 = *ip2; // two seperate memory addresses containing int 30
+ip1 = ip2; // both containg sane address and containing 30
+```
+
 <br>
 
 ## Pointers to Pointers (I dont understand)
 Since a pointer itself is stored somewhere in the memory its also hat its own memory address
 
-```ruby
+```cpp
 int iv1 = 25;
 # ip1 holds the address of x 
 int *ip1 = &iv1;
@@ -175,7 +184,7 @@ int *ip2 = &ip1;
 ```
 
 ip2 is a ponter to a pointer (**)
-```ruby
+```cpp
 int **ip2; 
 ip2 = &ip1; 
 ```

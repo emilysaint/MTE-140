@@ -51,8 +51,8 @@ Intput: **value** and **position** to insert in the list
 
 Steps:
 1. create new node to hold val to insert
-2. check for specia case if the pos is zero, inser as the new head or first head and end insert <mark> here   
-3. if pos is zero
+2. check for special case if the pos is zero, insert as the new head or first head and end insert  here   
+3. if pos is not zero
     - start head
     - itterate through the links to find the node's pos=
     keep an additional pointer for the address of the previous node
@@ -133,26 +133,26 @@ Input: **position** to remove in the list
 
 Steps:
 1. check for special case if the position is zero, remove head
-    - <mark> new head should become to the next node
+    - new head should be set to the next node
     - free the current head from the memory (delete and set to *NULL* ptr)
     - end the process
 2. If pos is not zero
     - start at the head itterate through the links to find the required node's pos
     - kepp and additional pointer for the address of the previous node and next node
-3. <mark> remove the current node and properly link the remaining nodes
-    - <mark> the previous node's address should now point to the adrress of the next node 
-    - <mark> delete and free the required node at position
+3. remove the current node and properly link the remaining nodes
+    - the previous node's address should now point to the adrress of the next node 
+    - delete and free the required node at position
 
 Example
 
 <mark style="background-color:#cc7e78;"> 
-How does it know head, where def
-pointing by reference
+How does it know head, where def, linked list class
+pointing by reference NA
 how are you looping are you looping one behind the acc one you want
 If you had made current a ptr then it would be dangling too 
 </mark>
 
-```ruby
+```cpp
 void LinkedList::remove(int position) {
     # step 1
     if(position == 0){
@@ -175,11 +175,12 @@ void LinkedList::remove(int position) {
         i++;
     }
     # step 3
-    previous->next = current->next;
-    delete current; # DANGLING PTR
-    current = nullptr;
+    previous->next = current->next; // current is pointing to the one we want to delete, reassigning the node somewhere else after current, -> does the defrerencing
+    delete current; // DANGLING PTR // juping the current and now 
+    current = nullptr; // clean up of the one we dont want
 }
 ```
+current holds address of nothing, set to null ptr
 
 <br>
 
