@@ -113,9 +113,10 @@ array is pointer
 - dynamic arrays
     - create using the new operator on the <mark> heap
 
-```ruby 
-int *array = new int[size]; #size can be changed during run time!
-Delete [] array; # do not forget to free the space
+```cpp 
+int *array = new int[size]; // size can be changed during run time!
+delete [] array; // do not forget to free the space
+array = nullptr;
 ```
 <mark> *dangling pointer, set array to null ptr, maybe since *array is init. How array ptr
 
@@ -123,11 +124,29 @@ Delete [] array; # do not forget to free the space
 
 ## Sequential List **Initalization**
 ![L7_seq_list_init.jpg](Screenshots\L7_seq_list_init.jpg)
+capacity: array of 8 elems
+if nothing in array then size zero, since "#" means no value
 
 <br>
 
-## Sequential List **Insert**
+## Sequential List **Insert** (Filling the array)
 ![L7_seq_list_insert.jpg](Screenshots\L7_seq_list_insert.jpg)
+```cpp
+insert("c", 0)
+// insert string "c", size is now 1
+insert("b", 0)
+// do properly with pointers and everything should shift forward
+
+// canot do cannot insert items in empty space
+insert("a", 5)
+
+insert("k", 2)
+// this works, if done properly, shift all items to back
+```
+<mark style="background-color:#cc7e78;"> 
+what happens when full, does it shift, and get rid of the last one or the whole thing gets bigger?
+</mark>
+
 - If the size reaches capacity, capacity may be inc to accommodate new elems (dyn arrays)
 - In the < vector > library, the capacity is inc on `push_back()` if out of space
 - I t is important to test the validity of insert position,
@@ -136,7 +155,8 @@ Delete [] array; # do not forget to free the space
 <br>
 
 ## Sequential List **Delete**
-![L7_seq_list_del.jpg](Screenshot\L7_seq_list_del.jpg)
+![L7_seq_list_del.jpg](Screenshots\L7_seq_list_del.jpg)
+
 *items are shifted twrds the front of the list. No gap left btwn elems
 
 - If the size is significantly smaller than capacity, the list capacity can
