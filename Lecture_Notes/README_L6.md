@@ -23,12 +23,19 @@ Encapsulation: putting mthds in its own func and grouping mths together in a cla
 - struct is a class that has all members public by default; otherwise, same as class, often to rep data members, without mthd members
 
 Struct declaration
-``` ruby
+``` cpp
 struct Node {
     DataType data;
     Node *next;
     Node() : data(0), next(nullptr) {}; # it may have constructors too.
-    Node(int x) : data(x), next(nullptr) {};
+    Node(int x) : data(x), next(nullptr) {}; // initial only works const 
+    //des no vars
+
+    Node (---){
+        //init
+    data = x; 
+    next
+    } 
 };
 ```
 Class declaration

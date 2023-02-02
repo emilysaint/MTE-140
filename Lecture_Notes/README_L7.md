@@ -91,7 +91,7 @@ there are two types
 <br>
 
 ## Squential List (Array) Implementation
-<mark style="background-color:#cc7e78;"> 
+<mark style="background-color:blue;"> 
 when init `new` is technically a pointer
 array is pointer
 </mark>
