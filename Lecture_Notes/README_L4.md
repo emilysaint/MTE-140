@@ -45,21 +45,21 @@ Ox155FFFF is hex
 
 ## Ex 1
 
-```ruby
-# return variable 'a' plus 1
+```cpp
+// return variable 'a' plus 1
 int testFunc1 (int a){ 
-    # here, memory is statically allocated to 'a'
-    # 'a' is a variable within the scope of testFunc1
+    // here, memory is statically allocated to 'a'
+    // 'a' is a variable within the scope of testFunc1
     cout << endl << "Inside function, address of 'a': " << &a << endl;
     a++;
     return a;
 }
-# after the end of this scope, local variables are automatically removed.
-# their memory space is automatically released back to the pool (free for other usage)
+// after the end of this scope, local variables are automatically removed.
+// their memory space is automatically released back to the pool (free for other usage)
 
 int main() { 
-    # main function also has its scope
-    int x = 1, y = 10; //here, memory is statically allocated to x and y.
+    // main function also has its scope
+    int x = 1, y = 10; // here, memory is statically allocated to x and y.
     cout << "Before function call: Value of x: "<< x << ". Address of x: " << &x << endl;
     cout << "Before function call: Value of y: "<< y << ". Address of y: " << &y << endl;
 
@@ -72,7 +72,7 @@ int main() {
 }
 ```
 Output
-```ruby
+```cpp
 >> Function call without input (x):
 Inside function, address of 'a': 0x7ffee62bea1c
 2
@@ -84,16 +84,16 @@ Inside function, adress of 'a': 0x7ffee62bea1c
 <br>
 
 ## The new operator
-```ruby
+```cpp
 int *p;
 p = new int(17); # init *p to 17
 
 int = *p1; 
 p1 = new int; 
-# without init
-# not recommended
+// without init
+// not recommended
 cout<<*p1;
-# will get whatever was previously left there in the 4 bytes space. Some unknow number 
+// will get whatever was previously left there in the 4 bytes space. Some unknow number 
 ```
 
 Allocate memory with the size of the data type
@@ -102,16 +102,16 @@ normally 8bytes
 
 *Attention Memory Leak: the memory will not be automatically released/de-allocated, untill end of the program or user `delete`.
 
-```ruby
+```cpp
 int *p
 p = new int[5]
 
-# resquest  8bytes to show the size of the array
-# +5size of p
-# 5x4 = 10bytes
+// resquest  8bytes to show the size of the array
+// +5size of p
+// 5x4 = 10bytes
 ```
 
-```ruby
+```cpp
 int a[3] = {10, 20, 30}; 
 a[0] = 10; 
 a = ?
@@ -119,14 +119,14 @@ cout << a;
 ```
 
 Output
-```ruby
-# memory address of a
+```cpp
+// memory address of a
 adress of a[0] pointer
 *a = a[0]
 
-# only have stored address of element 1 with arrays
-# you cannot get memory adress of next element
-a[1] = 20 # so this doesnt work 
+// only have stored address of element 1 with arrays
+// you cannot get memory adress of next element
+a[1] = 20 // so this doesnt work 
 
 ```
 Static memory doesnt allow you to replace element, yu have to shift everything down and loop through everything. Dynmic memory allows you to add/inset. 
@@ -147,9 +147,9 @@ the memory will not be automatically released/de-allocated until
 only in heap it will happen 
 not in stack
 
-```ruby
-int *p; # this is pointing to a memory loc
-p = new int(17); # Initializes *p to 17
+```cpp
+int *p; // this is pointing to a memory loc
+p = new int(17); // Initializes *p to 17
 ```
 
 <br>
@@ -157,10 +157,10 @@ p = new int(17); # Initializes *p to 17
 ## Delete operator
 - dealocating dyn mem, which means furture `new` operators will be able to allocate the mem space
 
-```ruby
+```cpp
 int *p;
-p = new int (17);  # init *p to 17
-delete p; # but p still points there and is called a "dangling pointer"
+p = new int (17);  // init *p to 17
+delete p; // but p still points there and is called a "dangling pointer"
 ```
 
 <br>
@@ -169,11 +169,11 @@ delete p; # but p still points there and is called a "dangling pointer"
 - dangling pointers is a non-null pointer that points to unallocated memory
 - deferencing a dangling pointer may cause the program to crash
 - avoid dangling pointers by immidiatley assign point to NULL after delete
-```ruby
+```cpp
 int *p; 
 p = new int(17);
-delete p; # if p is the de-ref using (*p), this leads to unpredictable results
-p = NULL; # 0 or null ptr. if someone tries tri check p validity later, if(p) = False
+delete p; // if p is the de-ref using (*p), this leads to unpredictable results
+p = NULL; // 0 or null ptr. if someone tries tri check p validity later, if(p) = False
 ```
 
 <br>
@@ -203,7 +203,7 @@ private:
     void checkDate(); # check if the date is valid.
 public:
     // constructors all seperate to change, we need get/set
-    MonthAndDay(); // overload constructor with no argument condition 
+    MonthAndDay(); F// overload constructor with no argument condition 
     # note: no return value not even void
     MonthAndDay(int month Value); // overload 1 int condition
     MonthAndDay(int month Value, int dayValue); // overload 2 
@@ -224,7 +224,7 @@ Destructors:
     MonthAndDay(); // constructor
     ~MonthAndDay(); // destructor
     ```
-```ruby
+```cpp
 #include <iostream> 
 using namespace std;
 int* testFunc3 (int a){

@@ -72,7 +72,7 @@ Jan 26, 2023
 ## Node Struct
 Often def as a struct for easier access
 *Structs is a class that has all members public buy default
-```ruby
+```cpp
 struct Node{
     int data; 
     Node* next;
@@ -80,7 +80,7 @@ struct Node{
 ```
 Pointer to a node
 - the arrow `defreferences` and `accesses` atributes of a stuct that is referenced by a pointer
-```ruby
+```cpp
 Node* head = new Node; 
 head -> data = 10; 
 head -> next = NULL;

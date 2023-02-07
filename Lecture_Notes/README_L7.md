@@ -229,7 +229,7 @@ Its implementation should keep track of the following:
     ![L7_doubly_linked_list_insert.jpg](Screenshots\L7_doubly_linked_list_insert.jpg)
     
 Example: <mark> Four insert operations are applied to an empty doubly linked list
-```ruby
+```cpp
 insert('c',0) =>
 insert('b',0) =>
 insert('a',0) =>
@@ -248,7 +248,7 @@ insert('k',1)
 
 
 Example: two remove operations on the previous example
-```ruby
+```cpp
 remove (2) =>
 remove (0)
 ```

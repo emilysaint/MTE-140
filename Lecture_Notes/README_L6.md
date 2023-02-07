@@ -39,7 +39,7 @@ struct Node {
 };
 ```
 Class declaration
-```ruby
+```cpp
 class LinkedList{
 Private:
     Node *head = nullptr; #NULL can cause ambiguity.
@@ -66,7 +66,7 @@ Steps:
 4. insert the node between previous and current
 
 Example
-```ruby
+```cpp
 void LinkedList::insert(DataType value, int
 position) {
     # step 1. create new node
@@ -113,7 +113,7 @@ Steps:
 *Note: no need to create a new node since we are only modifying a node's value
 
 Example
-```ruby
+```cpp
 void LinkedList::replace(int position, DataType value) {
 # step 1
     Node *current = head;
@@ -199,7 +199,7 @@ Steps:
     - cout every node val
 
 Example
-```ruby
+```cpp
 void LinkedList::print() {
     # step 1 – you can put cout a warning here if you want
     if (head == nullptr) {
@@ -243,7 +243,7 @@ is interpretation correct <br>
 someone asked how you would loop in rev
 </mark>
 
-```ruby
+```cpp
 int main(){
     LinkedList myList;
     # object.comand(value, index)
