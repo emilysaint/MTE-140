@@ -181,30 +181,30 @@ int factorial(int 0){
 Recursive
 ```cpp
 int factorialRecursive (int n){
-if(n < 0) {
-cout<< "non-negative
-input!" <<endl;
-return 0;
-}
-else if (n == 0) return 1;
-else return (n * factorialRecursive (n-1));
+    if(n < 0) {
+        cout<< "non-negative
+        input!" <<endl;
+        return 0;
+    }
+    else if (n == 0) return 1;
+    else return (n * factorialRecursive (n-1));
 }
 ```
 
 Itterative
 ```cpp
 int factorialNonRecursive (int n){
-if(n < 0) {
-cout<< "non-negative
-input!" <<endl
-return 0;
-}
-if (n == 0) return 1;
-int result = 1;
-for(int i = 1; i <= n; i++){
-result = result * i;
-}
-return result;
+    if(n < 0) {
+        cout<< "non-negative
+        input!" <<endl
+        return 0;
+        }
+    if (n == 0) return 1;
+        int result = 1;
+        for(int i = 1; i <= n; i++){
+            result = result * i;
+        }
+        return result;
 }
 ```
 Check `Week5_factorial` demo code
@@ -212,19 +212,19 @@ Check `Week5_factorial` demo code
 <br>
 
 ## Call Tree and Call Traces
-o Allow visualization of function calls and recursion, where each call spawns smaller
-representations of itself
-o This is represented as tree branches that are branching out from the tree root
-o To trace the calls, we start off from the top of node (root) of call tree and go all the way
-down to the bottom of tree, which signifies the end of recursive calls
-o Values at base case are defined, which are used to find the value of upper level of tree.
-Then the process goes upward
+- Allow visualization of function calls and recursion, where each call spawns smaller representations of itself
+- This is represented as tree branches that are branching out from the tree root
+- To trace the calls, we start off from the top of node (root) of call tree and go all the way down to the bottom of tree, which signifies the end of recursive calls
+- Values at base case are defined, which are used to find the value of upper level of tree. Then the process goes upward
 
 <br>
 
 ## The Factorial: Call Tree to find nth number
 
 > 𝐹(0) = 1, 𝐹(𝑛) = 𝑛 × 𝑛 − 1 ! (n⩾1)
+
+![L9_tree1_jpg](Screenshots\L9_tree1.jpg)
+![L9_tree2_jpg](Screenshots\L9_tree2.jpg)
 
 <br>
 
@@ -245,3 +245,5 @@ Then the process goes upward
 
 ## Questions
 - reccursion going back up?
+- moving curent through list by looking withoutt doing
+    `head->next->next-> ...`
