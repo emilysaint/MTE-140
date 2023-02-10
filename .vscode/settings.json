@@ -1,5 +1,14 @@
 {
     "files.associations": {
-        "q0": "cpp"
+        "q0": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "system_error": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "vector": "cpp"
     }
 }
