@@ -18,32 +18,6 @@ SequentialList::~SequentialList() {
     data_ = NULL; // null goes aft bc pointing to null then deleting doesnt work
 }
 
-
-'''
-Description
-The details of the header file sequential-list.h are as follows:
-
-DataType defines the kind of data that the list will contain.
-Being public, it can be accessed directly as SequentialList::DataType
-Member variables:
-data : Pointer to the memory of array allocated to store the list data.
-capacity : Returns the maximum number of elements the list can hold.
-size : Returns the number of elements in the list.
-
-
-SequentialList(const SequentialList& rhs): Copy constructor, 
-which copies one list rhs to another list. 
-For this assignment, you don’t have to implement it. Just leave it blank in private section.
-
-SequentialList& operator=(const SequentialList& rhs): 
-Assignment operator for the operations of the form list1 = list2. 
-For this assignment, you don’t have to implement it. 
-Just leave it blank in private section.
-
-Constant member functions:
-Constant member functions are those function which do not modify class member variables.
-'''
-
 unsigned int SequentialList::size() const {
     // Returns the number of elements in the list.
     return size_;
@@ -59,10 +33,10 @@ unsigned int SequentialList::capacity() const {
 bool SequentialList::empty() const {
     // Returns true if the list is empty, false otherwise.
     // if elem number 1 exists then true 
-    if *data_ != NULL;{
+    if (size_ == 0){
         return true;
     }
-    else;{
+    else{
         return false;
     }
 }
@@ -71,11 +45,10 @@ bool SequentialList::empty() const {
 bool SequentialList::full() const {
     // Returns true if the list is at capacity, false otherwise.
     // if last in elem in list has a value then true
-    if *data[cap] != NULL;
-    {
+    if (size_ == capacity_){
         return true; 
     }
-    else;{
+    else{
         return false;
     }
 }
@@ -85,9 +58,12 @@ SequentialList::DataType SequentialList::select(unsigned int index) const {
     // Returns the value at the given index in the list. 
     // If index is invalid, return the value of the last element.
 
-    // get val of size, then use size index to find val of lastnumber
-    value = *data_[SequentialList.size_]
-    return value; // returns the value of the last element
+    if (index <= size_ and index >= 0){
+        return data_[index]; 
+    }
+    else{
+        return data_[size_-1];
+    }
 }
 
 
@@ -96,20 +72,21 @@ unsigned int SequentialList::search(DataType val) const {
     // and returns the index of this value if found (for the first time the value is found). 
     // Returns the size of the list if no such value can be found in the list.
 
-    for (int i=0; i <= SequentialList.size_; i++){
-        if *data_[i] == val;
-        {
+    for (int i=0; i <= size_; i++){
+        if (data_[i] == val){
             return i; 
         }
     }
+    return size_; // if no return then return this
 }
 
 
 void SequentialList::print() const {
     // Prints all elements in the list to the standard output.
-    for (int i=0; i <= sSequentialList.size_; i++)
+    // anything past size to capacity, is it zeros or trash memory
+    for (int i=0; i < size_; i++)
     {
-        cout << *data_[1] << "; "; 
+        cout << data_[i] << "; "; 
     }
 }
 
@@ -117,18 +94,24 @@ void SequentialList::print() const {
 bool SequentialList::insert(DataType val, unsigned int index) {
     // Inserts a value into the list at a given index. 
     // Returns true if successful and false otherwise.
-    for (int i = 0; i<= SequentialList.capacity_; i++)
-    {
-        if (i == 0){
-            data[i] = val; 
-        }
-        else if (i == SequentialList.capacity_){
-            return; 
-        }
-        else{
-            *data[i]->next = *data[i];
-        }
+
+    if (index < 0){
+        return false; 
     }
+    else if (size_ == capacity_){
+        return false; 
+    }
+    else if (index <= size_){
+        for (int i = (size_ - 1); i >= index; i--)
+        {
+            data_[i+1] = data_[i]; 
+        }
+
+        data_[index] = val;
+        size_ ++; // it is changing the feild in the same instance that the mth is running on. If a is my SequentialList instance, then i can call in main a.size_ = some int
+        return true; 
+    }
+    return false;
 }
 
 
@@ -136,26 +119,16 @@ bool SequentialList::insert_front(DataType val) {
     // Inserts a value at the beginning of the list. 
     // Returns true if successful and false otherwise.
 
-    for (int i = 0; i<= SequentialList.capacity_; i++)
-    {
-        if (i == 0){
-            data[i] = val; 
-        }
-        else if (*data[i] == 0){ // what's the empty num 
-            return; 
-        }
-        else{
-            *data[i]->next = *data[i];
-        }
-    }
+    return insert(val, 0);
+
 }
 
 
 bool SequentialList::insert_back(DataType val) {
     // Inserts a value at the end of the list. 
     // Returns true if successful and false otherwise.
-
-    *data[(SequentialList.size_)+1] = val; 
+    
+    return insert(val, size_);
 
 }
 
@@ -163,18 +136,23 @@ bool SequentialList::insert_back(DataType val) {
 bool SequentialList::remove(unsigned int index) {
     // Deletes the value from the list at the given index.
 
-    for (int i = index; i<= SequentialList.capacity_; i++)
-    {
-        if (i == idex){
-            data[i] = false; 
-        }
-        else if (*data[i] == 0){ // what's the empty num 
-            return; 
-        }
-        else{
-            *data[i]->next = *data[i+1];
-        }
+    if (index < 0){
+        return false; 
     }
+    else if (size_ == 0){
+        return false; // cap = 5 and size = 5, means that list is full
+    }
+    else if (index < size_){
+        // remove element at list
+        // shift elems down
+        for (int i = index, i < (size_-1), i++){
+            data[i] = data[i+1]; 
+        }
+        size_ --; // c++ does update size automatically, size is a car holding an int val
+        return true; 
+    }
+    return false;
+}
 }
 
 
@@ -182,21 +160,9 @@ bool SequentialList::remove_front() {
     // Deletes the value from the beginning of the list. 
     // Returns true if successful and false otherwise.
 
-    bool status = false;
+    return remove(0); 
+    // instance.remove(...) already inside the list, vice versa with main
 
-    for (int i = 0; i<= SequentialList.capacity_; i++)
-    {
-        if (i == 0){
-            data[i] = false; 
-        }
-        else if (*data[i] == 0){ // what's the empty num 
-            status = true; 
-            return status; 
-        }
-        else{
-            *data[i]->next = *data[i+1];
-        }
-    }
 }
 
 
@@ -204,18 +170,15 @@ bool SequentialList::remove_back() {
     // Deletes the value at the end of the list. 
     // Returns true if successfuland false otherwise
 
-    if (*data[SequentialList.size_] != false){
-        *data[SequentialList.size_] = false;
-        return true; 
-    }
-    else{
-        return false; 
-    }
+    return remove(size_-1); // no elem at size, parameter of index
 }
 
 bool SequentialList::replace(unsigned int index, DataType val) {
     // Replaces the value at the given index with the given value.
-    *data[index] = 0; 
-    *data[index] = val; 
+    if (index < size_) and (index >= 0){
+        data[index] = val;
+        return true; 
+    } 
+    return false; 
 
 }
