@@ -182,7 +182,7 @@ bool DoublyLinkedList::insert_front(DataType value) {
 // Inserts a value at the end of the list. 
 // Returns true if successful and false otherwise.
 bool DoublyLinkedList::insert_back(DataType value) {
-    insert(value, size_) // index would be == to size since at back
+    insert(value, size_); // index would be == to size since at back
 }
 
 // Deletes the value from the list at the given index.
@@ -193,7 +193,8 @@ bool DoublyLinkedList::remove(unsigned int index) {
     else if (size_== 0){
         return false; 
     }
-    else (index < size_){
+    else {
+        // (index < size_)
         Node* current = getNode(index);
         // head_;  
         // for (int i = 0; i<=index; i++){

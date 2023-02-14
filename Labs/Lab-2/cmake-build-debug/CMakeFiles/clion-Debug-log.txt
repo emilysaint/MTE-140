@@ -1,0 +1,12 @@
+C:\Users\emily\AppData\Local\JetBrains\CLion2022.3\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=/cygdrive/c/Program Files/JetBrains/CLion 2022.3.1/bin/ninja/cygwin/ninja.exe" -G Ninja -S "/cygdrive/c/Users/emily/Documents/MTE 140/MTE-140/Labs/Lab-2" -B "/cygdrive/c/Users/emily/Documents/MTE 140/MTE-140/Labs/Lab-2/cmake-build-debug"
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /cygdrive/c/Users/emily/Documents/MTE 140/MTE-140/Labs/Lab-2/cmake-build-debug

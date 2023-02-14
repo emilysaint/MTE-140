@@ -13,8 +13,8 @@
 #include <string>
 
 // Uncomment the .h files when you're ready to start testing
-#include "sequential-list.h"
-//#include "doubly-linked-list.h"
+//#include "sequential-list.h"
+#include "doubly-linked-list.h"
 //#include "polynomial.h"
 
 // Once uncommented, you will need to modify the CMakeLists.txt
@@ -37,7 +37,7 @@ string get_status_str(bool status) {
     return status ? "TEST PASSED" : "TEST FAILED";
 }
 
-class SequentialListTest {
+class DoublyLinkedListTest {
 public:
     bool test1();
     bool test2();
@@ -54,7 +54,7 @@ public:
 int main() {
 
     int grade = 0;
-    SequentialListTest seq_test;
+    DoublyLinkedListTest seq_test;
 
     // Some feedback about the tests.
     string seq_test_descriptions[10] = {
@@ -107,10 +107,10 @@ int main() {
 
 
 // New empty list is valid
-bool SequentialListTest::test1() {
+bool DoublyLinkedListTest::test1() {
 
     unsigned int capacity = 5;
-    SequentialList list(capacity);
+    DoublyLinkedList list(capacity);
 
     ASSERT_TRUE(list.size() == 0)
     ASSERT_TRUE(list.capacity() == capacity)
@@ -122,11 +122,11 @@ bool SequentialListTest::test1() {
 
 
 // insert_front() and insert_back() on zero-element list
-bool SequentialListTest::test2() {
+bool DoublyLinkedListTest::test2() {
 
     unsigned int capacity = 5;
-    SequentialList list1(capacity);
-    SequentialList list2(capacity);
+    DoublyLinkedList list1(capacity);
+    DoublyLinkedList list2(capacity);
 
     ASSERT_TRUE(list1.insert_front(100))
     ASSERT_TRUE(list2.insert_back(100))
@@ -141,10 +141,10 @@ bool SequentialListTest::test2() {
 
 
 // select() and search() work properly
-bool SequentialListTest::test3() {
+bool DoublyLinkedListTest::test3() {
 
     unsigned int capacity = 5;
-    SequentialList list(capacity);
+    DoublyLinkedList list(capacity);
 
     for (unsigned int i = 0; i < capacity; i++) {
         ASSERT_TRUE(list.insert_back(i * 100))
@@ -164,11 +164,11 @@ bool SequentialListTest::test3() {
 
 
 // remove_front() and remove_back() on one-element list
-bool SequentialListTest::test4() {
+bool DoublyLinkedListTest::test4() {
 
     unsigned int capacity = 5;
-    SequentialList list1(capacity);
-    SequentialList list2(capacity);
+    DoublyLinkedList list1(capacity);
+    DoublyLinkedList list2(capacity);
 
     ASSERT_TRUE(list1.insert_front(100))
     ASSERT_TRUE(list2.insert_front(100))
@@ -183,10 +183,10 @@ bool SequentialListTest::test4() {
 
 
 // Inserting too many elements should fail
-bool SequentialListTest::test5() {
+bool DoublyLinkedListTest::test5() {
 
     unsigned int capacity = 5;
-    SequentialList list(capacity);
+    DoublyLinkedList list(capacity);
 
     // Fill up the list.
     for (unsigned int i = 0; i < capacity; i++) {
@@ -208,10 +208,10 @@ bool SequentialListTest::test5() {
 
 
 // insert_front() keeps moving elements forward
-bool SequentialListTest::test6() {
+bool DoublyLinkedListTest::test6() {
 
     unsigned int capacity = 5;
-    SequentialList list(capacity);
+    DoublyLinkedList list(capacity);
 
     for (unsigned int i = 0; i < capacity; i++) {
 
@@ -219,7 +219,7 @@ bool SequentialListTest::test6() {
         ASSERT_TRUE(list.size_ == (i + 1))
 
         for (int j = 0; j <= i; j++) {
-            SequentialList::DataType expected_value = i - j;
+            DoublyLinkedList::DataType expected_value = i - j;
             ASSERT_TRUE(list.data_[j] == expected_value)
         }
     }
@@ -228,10 +228,10 @@ bool SequentialListTest::test6() {
 
 
 // inserting at different positions in the list succeeds
-bool SequentialListTest::test7() {
+bool DoublyLinkedListTest::test7() {
 
     unsigned int capacity = 10;
-    SequentialList list(capacity);
+    DoublyLinkedList list(capacity);
 
     for (int i = 0; i < 4; i++) {
         ASSERT_TRUE(list.insert_back(i))
@@ -254,11 +254,11 @@ bool SequentialListTest::test7() {
 
 
 // try to remove too many elements, then add a few elements
-bool SequentialListTest::test8() {
+bool DoublyLinkedListTest::test8() {
 
     unsigned int capacity = 5;
     const int num_elems = 4;
-    SequentialList list(capacity);
+    DoublyLinkedList list(capacity);
 
     for (int i = 0; i < num_elems; i++) {
         ASSERT_TRUE(list.insert_back(i))
@@ -283,10 +283,10 @@ bool SequentialListTest::test8() {
 
 
 // lots of inserts and deletes, all of them valid
-bool SequentialListTest::test9() {
+bool DoublyLinkedListTest::test9() {
 
     unsigned int capacity = 5;
-    SequentialList list(capacity);
+    DoublyLinkedList list(capacity);
 
     ASSERT_TRUE(list.insert_back(32))
     ASSERT_TRUE(list.insert_front(44))
@@ -306,10 +306,10 @@ bool SequentialListTest::test9() {
 
 
 // lots of inserts and deletes, some of them invalid
-bool SequentialListTest::test10() {
+bool DoublyLinkedListTest::test10() {
 
     unsigned int capacity = 5;
-    SequentialList list(capacity);
+    DoublyLinkedList list(capacity);
 
     ASSERT_FALSE(list.remove(0))
     ASSERT_TRUE(list.insert_back(32))

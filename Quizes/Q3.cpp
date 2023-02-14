@@ -68,16 +68,16 @@ In the diagram below, illustrate what happens after this code is run by putting 
 Consider the following function that takes the address of the head of a Doubly Linked List as the parameter. 
 Assume that a node of doubly linked list has previous pointer as prev and next pointer as next.
  
-void test(struct node **head_ref)
+void test(struct node **head_ref) // pointer to a pointer
 {
     struct node *temp = NULL;
-    struct node *current = *head_ref;
+    struct node *current = *head_ref; // dereferencing a pointer to a pointer = pointer
     while (current != NULL)
     {
         temp = current->prev;
         current->prev = current->next;
         current->next = temp;
-        current = current->prev;
+        current = current->prev; // copy pointer
         }
     if(temp != NULL )
     *head_ref = temp->prev;
