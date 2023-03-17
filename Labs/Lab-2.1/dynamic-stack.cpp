@@ -10,21 +10,36 @@
 // Maximum size of Stack
 const DynamicStack::StackItem DynamicStack::EMPTY_STACK = -999;
 
+/*
 DynamicStack::DynamicStack() {
-    int top_;
+    int top_; // init top
 }
 
 DynamicStack::DynamicStack(unsigned int capacity){
-    data_ = new int[EMPTY_STACK];
+    items_ = new int[EMPTY_STACK];
     capacity_ = capacity; 
+    init_capacity_ = capacity;
     size_ = 0; 
 }
+*/
+
+DynamicStack::DynamicStack() :
+        items_(new StackItem[16]),
+        capacity_(16),
+        size_(0),
+        init_capacity_(16) {}
+
+DynamicStack::DynamicStack(unsigned int capacity) :
+        items_(new StackItem[capacity]),
+        capacity_(capacity),
+        size_(0),
+        init_capacity_(capacity) {}
+
+///////////////////////////////////////////////////////
 
 DynamicStack::~DynamicStack() {
-    for (int i=0;i<data_.size();++i){
-        delete data_[i];
-    }
-    data_ = nullptr;
+    delete[] items_;
+    items_ = nullptr;
 }
 
 // Returns the number of items in the stack
@@ -47,7 +62,7 @@ DynamicStack::StackItem DynamicStack::peek() const {
         return false; 
     }
     else{
-        return stack[top_]; 
+        return items_[size_-1]; 
     }
 }
 
@@ -55,15 +70,24 @@ DynamicStack::StackItem DynamicStack::peek() const {
 // If the stack is not full, the value is pushed onto the stack. 
 // Otherwise, the capacity of the stack is doubled, and the item is then pushed onto the resized stack.
 void DynamicStack::push(StackItem value) {
-    // Overflow state
-    //  if (top_ > EMPTY_STACK-1){
+    // When array is not at capacity 
+    if (capacity_ != 0){
+        // When array is full
+        if (size_ == capacity_){
+            // Create a new bigger stack
+            auto *biggerStack = new StackItem[capacity_ *= 2];
 
-    if (top_ >= capacity_){
-        capacity_ *= 2;  
+            // Transfer all data
+            for (int i = 0; i < size_; i++){
+                biggerStack[i] = items_[i];
+            }
+            delete[] items_;
+            items_ = biggerStack; 
+        }
     }
     // When array is not full, push new value in stack
     // Increment top and add value
-    data_[++top_] = value; // ? dose it matter ++/++
+    items_[size++] = value;
     }
 }
 
@@ -74,28 +98,27 @@ void DynamicStack::push(StackItem value) {
 // Finally, If the stack is empty before the pop, the EMPTY STACK constant is returned.
 DynamicStack::StackItem DynamicStack::pop() {
     // Stack is empty
-    if (top < 0) {
+    if (size_ <= 0) {
         return EMPTY_STACK;
     }
     // When not empty remove top item 
     else {
-        int x = data_[top--]; // store value of stack[top] and decrement top   // ?????new?
-
         // When size is <= cap/4, half the array size
-        if (size_ <= (capacity_/4)){ 
+        if ((size_ <= (capacity_/4)) && (init_capacity_<(capacity_ / 2))){ 
+            // Check size if half, create new array and resize
+            auto *resizedStack = new StackItem[capacity_ / 2];
 
-            // Check size if it were halfed (resized)
-            int new_capacity_ = capacity_ / 2;
-
-            // When new cap is < initial capacity do not resize
-            if (new_capacity_ < capacity){ // ?????does cap work here 
-                break;
+            // Move items over
+            for (int i = 0; i < size_; i++){
+                resizedStack[i] = items_[i]; 
             }
-            // Resize arra
-            capacity_ = new_capacity_;
+            delete[] items_;
+            items_ = resizedStack;
         }
         // Return top item from stack
-        return x;
+        size_ -= 1; 
+        // store value of stack[top] and decrement top
+        return items_[top--];
     }
 }
 
@@ -105,18 +128,18 @@ DynamicStack::StackItem DynamicStack::pop() {
 void DynamicStack::print() const {
 
     // if empty, if incorrect size
-    if (data_.empty()){
+    if (items_.empty()){
         return false; 
     }
     else{
         // Peek
-        int x = data_.peek(); // new?
+        int x = items_.peek(); // new?
         // Print out data
         std::cout << x << " "<<std::endl;
         // Remove top element
-        data_.pop();
+        items_.pop();
         // Function call back for next item in stack 
-        data.push(x);
+        items_.push(x);
     }
 }
 
