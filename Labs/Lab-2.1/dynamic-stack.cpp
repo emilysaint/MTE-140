@@ -10,7 +10,7 @@
 // Maximum size of Stack
 const DynamicStack::StackItem DynamicStack::EMPTY_STACK = -999;
 
-/*
+// general code
 DynamicStack::DynamicStack() {
     int top_; // init top
 }
@@ -21,8 +21,9 @@ DynamicStack::DynamicStack(unsigned int capacity){
     init_capacity_ = capacity;
     size_ = 0; 
 }
-*/
 
+/* 
+used for test
 DynamicStack::DynamicStack() :
         items_(new StackItem[16]),
         capacity_(16),
@@ -34,8 +35,7 @@ DynamicStack::DynamicStack(unsigned int capacity) :
         capacity_(capacity),
         size_(0),
         init_capacity_(capacity) {}
-
-///////////////////////////////////////////////////////
+*/
 
 DynamicStack::~DynamicStack() {
     delete[] items_;
@@ -49,7 +49,7 @@ unsigned int DynamicStack::size() const {
 
 // Returns true if the stack is empty and false otherwise.
 bool DynamicStack::empty() const {
-    if(top_ < 1){
+    if(size_ < 1){
         return true;
     }
     return false;
@@ -115,10 +115,8 @@ DynamicStack::StackItem DynamicStack::pop() {
             delete[] items_;
             items_ = resizedStack;
         }
-        // Return top item from stack
-        size_ -= 1; 
         // store value of stack[top] and decrement top
-        return items_[top--];
+        return items_[size_--];
     }
 }
 
