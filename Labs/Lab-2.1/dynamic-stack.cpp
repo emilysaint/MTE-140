@@ -12,18 +12,21 @@ const DynamicStack::StackItem DynamicStack::EMPTY_STACK = -999;
 
 // general code
 DynamicStack::DynamicStack() {
-    int top_; // init top
+    items_ = new StackItem[16];
+    capacity_ = 16;
+    init_capacity_ = 16;
+    size_ = 0;
 }
 
 DynamicStack::DynamicStack(unsigned int capacity){
-    items_ = new int[EMPTY_STACK];
-    capacity_ = capacity; 
+    items_ = new StackItem[capacity];
+    capacity_ = capacity;
     init_capacity_ = capacity;
-    size_ = 0; 
+    size_ = 0;
 }
 
 /* 
-used for test
+used for test - Sam Ellenbogen
 DynamicStack::DynamicStack() :
         items_(new StackItem[16]),
         capacity_(16),
@@ -59,10 +62,10 @@ bool DynamicStack::empty() const {
 DynamicStack::StackItem DynamicStack::peek() const {
     // Empty case
     if (size_ <= 0){
-        return false; 
+        return EMPTY_STACK;
     }
     else{
-        return items_[size_-1]; 
+        return items_[size_-1];
     }
 }
 
@@ -70,7 +73,7 @@ DynamicStack::StackItem DynamicStack::peek() const {
 // If the stack is not full, the value is pushed onto the stack. 
 // Otherwise, the capacity of the stack is doubled, and the item is then pushed onto the resized stack.
 void DynamicStack::push(StackItem value) {
-    // When array is not at capacity 
+    // When array is not at capacity
     if (capacity_ != 0){
         // When array is full
         if (size_ == capacity_){
@@ -82,13 +85,12 @@ void DynamicStack::push(StackItem value) {
                 biggerStack[i] = items_[i];
             }
             delete[] items_;
-            items_ = biggerStack; 
+            items_ = biggerStack;
         }
     }
     // When array is not full, push new value in stack
     // Increment top and add value
-    items_[size++] = value;
-    }
+    items_[size_++] = value;
 }
 
 // Removes and returns the top item from the stack as long as the stack is not empty. 
@@ -101,22 +103,27 @@ DynamicStack::StackItem DynamicStack::pop() {
     if (size_ <= 0) {
         return EMPTY_STACK;
     }
-    // When not empty remove top item 
+        // When not empty remove top item
     else {
-        // When size is <= cap/4, half the array size
-        if ((size_ <= (capacity_/4)) && (init_capacity_<(capacity_ / 2))){ 
+        // When size after poping is <= cap/4, half the array size
+        // Only do resize when new cap at least the init cap
+        if ((size_-1 <= (capacity_/4)) && (init_capacity_<=(capacity_ / 2))){
+
             // Check size if half, create new array and resize
             auto *resizedStack = new StackItem[capacity_ / 2];
+            capacity_ = capacity_/2;
 
             // Move items over
             for (int i = 0; i < size_; i++){
-                resizedStack[i] = items_[i]; 
+                resizedStack[i] = items_[i];
             }
             delete[] items_;
             items_ = resizedStack;
         }
-        // store value of stack[top] and decrement top
-        return items_[size_--];
+        // Store value of stack[top] and decrement top
+        size_ -= 1;
+        // Return the last item
+        return items_[size_];
     }
 }
 
@@ -124,20 +131,14 @@ DynamicStack::StackItem DynamicStack::pop() {
 // (Note: it is mainly used to help you visualize the data. It will not be used in any test cases for grading.)
 // https://www.geeksforgeeks.org/print-stack-elements-from-bottom-to-top/
 void DynamicStack::print() const {
-
     // if empty, if incorrect size
-    if (items_.empty()){
-        return false; 
+    if (size_<=0){
     }
     else{
-        // Peek
-        int x = items_.peek(); // new?
-        // Print out data
-        std::cout << x << " "<<std::endl;
-        // Remove top element
-        items_.pop();
-        // Function call back for next item in stack 
-        items_.push(x);
+        for (int i; i < size_; i++){
+            std::cout << items_[i] << "; ";
+        }
+        std::cout << endl;
     }
 }
 
