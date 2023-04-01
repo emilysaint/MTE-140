@@ -6,7 +6,8 @@ using namespace std;
 // https://www.softwaretestinghelp.com/binary-search-tree-in-cpp/
 // https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
 
-/* This is a structure declaration. 
+/* NODE FUNCTION
+This is a structure declaration. 
 Node contains the following member function and variables:
 a) `Node(DataType newval)`: Sets the left and right children to NULL, and initializes val.
 b) `val`: Value of the node.
@@ -23,7 +24,7 @@ BinarySearchTree::Node::Node(DataType newval) {
     //int avlBalance;
 }
 
-/*2) `root` : Pointer to the root node of the tree.*/
+/*`root` : Pointer to the root node of the tree.*/
 int BinarySearchTree::getNodeDepth(Node* n) const {
     if (n == nullptr){
         return -1;
@@ -31,17 +32,17 @@ int BinarySearchTree::getNodeDepth(Node* n) const {
     if (n == root_){
         return depth;
     }
-    int left_depth = getNodeDepthHelper(n->left, depth + 1, root_);
+    int left_depth = getNodeDepth(n->left, depth + 1, root_);
     if (left_depth == -1){
-        return getNodeDepthHelper(n->right, depth + 1, root_);
+        return getNodeDepth(n->right, depth + 1, root_);
     }
     return left_depth;
 }
 
-// Default constructor to initialize the root.
-/*Constructor to initialize an empty tree with no node.*/
+/* CONSTRUCTOR FUNCTION
+Constructor to initialize an empty tree with no node.*/
 BinarySearchTree::BinarySearchTree() {
-    Node* root_ = new Node; 
+    root_ = nullptr; // ? Node* root_ = new Node; 
     size_= 0; 
 }
 
@@ -54,56 +55,45 @@ BinarySearchTree::~BinarySearchTree() {
     Node = nullptr; 
 }
 
-// Returns the number of nodes in the tree.
-/*Returns the number of nodes in the tree.*/
+/* SIZE FUNCTION
+Returns the number of nodes in the tree.*/
 unsigned int BinarySearchTree::size() const {
     return size_; 
 }
 
-// Returns the maximum value of a node in the tree. You can assume that
-// this function will never be called on an empty tree.
-/*Returns the maximum value of a node in the tree among all the nodes. 
+/* MAX FUNCTION
+Returns the maximum value of a node in the tree among all the nodes. 
 You can assume that this function will never be called on an empty tree.*/
 BinarySearchTree::DataType BinarySearchTree::max() const {
-    root_ = getRootNode();
-    if (root_ == nullptr) {
-        // return INT_MIN;
-        return false;
-    }
-    int max_left = maxHelper(root_->left);
-    int max_right = maxHelper(root_->right);
-    return std::max(root_->data, std::max(max_left, max_right));
-    }
+    Node* curr = root_; 
+
+    // passing through to the left all the way down
+    while (curr->right != nullptr) {
+        curr = curr->right; 
+    }   
+    return curr->val; 
 }
 
-// Returns the minimum value of a node in the tree. You can assume that
-// this function will never be called on an empty tree.
-/*Returns the minimum value of a node in the tree among all the nodes. 
+/* MIN FUNCTION
+Returns the minimum value of a node in the tree among all the nodes. 
 You can assume that this function will never be called on an empty tree.*/
 BinarySearchTree::DataType BinarySearchTree::min() const {
-    root_ = getRootNode();
-    if (root_ == nullptr) {
-        return INT_MAX;
+    Node* curr = root_; 
+
+    // passing to the left all the way down
+    while (curr->left != nullptr){
+        curr = curr->left; 
     }
-    int min_left = minHelper(root_->left);
-    int min_right = minHelper(root_->right);
-    return std::min(root_->data, std::min(min_left, min_right));
+    // min value has been found
+    return curr->val; 
 }
 
-// Returns the maximum depth of the tree. A tree with only the root node has a depth of 0. 
-// You can assume that this function will never be called on anempty tree.
-/*Returns the maximum depth of all nodes in the tree.
+/* DEPTH FUNCTION
+Returns the maximum depth of all nodes in the tree.
 Since the root node has a depth of 0, a tree with only the root node will have 0 as the return value here. 
 You can assume that this function will never be called on an empty tree.*/
 unsigned int BinarySearchTree::depth() const {
-    root_ = getRootNode();
-    if (root_ == nullptr) {
-        return false;
-    }
-    int depth_left = depthHelper(root_->left);
-    int depth_right = depthHelper(root_->right);
-    return std::max(depth_left, depth_right) + 1;
-    }
+    return getNodeDepth(root_); 
 }
 
 // You can print the tree in whatever order you prefer. However, methods such
@@ -122,30 +112,35 @@ void BinarySearchTree::print() const {
 }
 
 
-// Returns true if a node with the value val exists in the tree; otherwise, it returns false.
-/*Returns true if a node with the value val exists in the tree; otherwise, it returns false.*/
+/* EXISTS FUNCTION
+Returns true if a node with the value val exists in the tree
+Otherwise, it returns false.*/
 bool BinarySearchTree::exists(DataType val) const {
-    root_ = getRootNode();
-    if(root_ == NULL || root_->data == val){
-        return root_;
+    Node* curr = root_; 
+    while (curr != nullptr){
+        if (curr->val == val){
+            return true; 
+        }
+        else if (curr->val > val){
+            // when the current value is less than the value looking for check left
+            curr = cur->left;
+        }
+        else{
+            // check right
+            curr = curr->right; 
+        }
     }
-    else if(root_->key < val){
-        getRootNodeAddress(root_->left,val);
-    }
-    else (root_->key > val){
-        getRootNodeAddress(root_->right,val);
-    }
+    return false; 
 }
 
-
-// Returns a pointer to the root node
-/*Returns a pointer to the root node.*/
+/* GET ROOT NODE FUNCTION
+Returns a pointer to the root node.*/
 BinarySearchTree::Node* BinarySearchTree::getRootNode() {
     return root_; 
 }
 
-// Returns the root node pointer address
-/*Returns the address of the root node pointer.*/
+/* GET ROOT NODE ADDRESS
+Returns the address of the root node pointer.*/
 BinarySearchTree::Node** BinarySearchTree::getRootNodeAddress() {
     return &root_; 
 }
@@ -155,7 +150,7 @@ BinarySearchTree::Node** BinarySearchTree::getRootNodeAddress() {
 /*Inserts the value val into the tree as a new node.
 Returns false if val already exists in the tree, and true otherwise.*/
 bool BinarySearchTree::insert(DataType val) {
-    Node* newNode = new BinarySearchTree::Node();
+    Node *newNode = new Node();
     root_ = getRootNode();
 
     if (root_ == NULL) {
@@ -208,80 +203,36 @@ Returns true if successful, and false otherwise.
 Note: when the to-be-removed node has two child nodes, replace the value with the predecessor (rather than successor).
 This implementation will be different from the demo code used in the lecture, which used the successor.*/
 bool BinarySearchTree::remove(DataType val) {
-
-# Deleting a node
-def deleteNode(root, key):
-
-    # Return if the tree is empty
-    if root is None:
-        return root
-
-    # Find the node to be deleted
-    if key < root.key:
-        root.left = deleteNode(root.left, key)
-    elif(key > root.key):
-        root.right = deleteNode(root.right, key)
-    else:
-        # If the node is with only one child or no child
-        if root.left is None:
-            temp = root.right
-            root = None
-            return temp
-
-        elif root.right is None:
-            temp = root.left
-            root = None
-            return temp
-
-        # If the node has two children,
-        # place the inorder successor in position of the node to be deleted
-        temp = minValueNode(root.right)
-
-        root.key = temp.key
-
-        # Delete the inorder successor
-        root.right = deleteNode(root.right, temp.key)
-
-    return root
-
-
-    Node* findMinNode(Node* node) {
-        while (node->left) {
-            node = node->left;
-        }
-        return node;
+    if (root_ == nullptr){
+        return false;
     }
 
-    Node* removeNode(Node* node, int data) {
-        if (!node) {
-            return node;
+    else if (val < root_->data){
+        root_->left = removeNode(root_->left, val);
+    } 
+    
+    else if (val > root_->data){
+        root_->right = removeNode(root_->right, val);
+    } 
+    
+    else {
+        if (!root_->left){
+            Node* temp = root_->right;
+            delete root_;
+            return temp;
+        } 
+        else if (!root_->right){
+            Node* temp = root_->left;
+            delete node;
+            return temp;
+        } 
+        else{
+            Node* minNode = findMinNode(root_->right);
+            root_->data = minNode->data;
+            root_->right = removeNode(root_->right, minNode->data);
         }
-
-        if (data < node->data) {
-            node->left = removeNode(node->left, data);
-        } else if (data > node->data) {
-            node->right = removeNode(node->right, data);
-        } else {
-            if (!node->left) {
-                Node* temp = node->right;
-                delete node;
-                return temp;
-            } else if (!node->right) {
-                Node* temp = node->left;
-                delete node;
-                return temp;
-            } else {
-                Node* minNode = findMinNode(node->right);
-                node->data = minNode->data;
-                node->right = removeNode(node->right, minNode->data);
-            }
-        }
-
-        return node;
     }
-
-
-
+    return true;
 }
 
 /*OPTIONAL. This function is not necessary for
