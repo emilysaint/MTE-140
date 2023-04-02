@@ -26,17 +26,22 @@ BinarySearchTree::Node::Node(DataType newval) {
 
 /*`root` : Pointer to the root node of the tree.*/
 int BinarySearchTree::getNodeDepth(Node* n) const {
+    // This is when empty
     if (n == nullptr){
         return -1;
     }
-    if (n == root_){
-        return depth;
+    // Counting up
+    int left_depth = getNodeDepth(n->left);
+    int right_depth = getNodeDepth(n->right); 
+    else if (left_depth > right_depth){
+        return left_depth + 1; 
     }
-    int left_depth = getNodeDepth(n->left, depth + 1, root_);
-    if (left_depth == -1){
-        return getNodeDepth(n->right, depth + 1, root_);
+    else if (left_depth < right_depth){
+        return right_depth + 1; 
     }
-    return left_depth;
+    else if (left_depth == right_depth){
+        return left_depth + 1; 
+    }
 }
 
 /* CONSTRUCTOR FUNCTION
@@ -102,15 +107,19 @@ unsigned int BinarySearchTree::depth() const {
 However, methods such as in-order or level-order traversal could be the most useful for debugging.
 Note: this function will not be used for grading purposes, so the printing format does not matter.*/
 void BinarySearchTree::print() const {
-    root_ = getRootNode();
-    if (root_ == NULL) {
-        return false;
-    }
-    Inorder(root_->left);
-    std::cout << root_->data << endl;
-    Inorder(root_->right);
+    printHelper(root_); 
 }
 
+void BinarySearchTree::printHelper(Node* n) const {
+    if (n == nullptr) {
+        return;   
+    }
+    else {
+        printHelper(n->left);
+        std::cout << n->data << endl;
+        printHelper(n->right);
+    }
+}
 
 /* EXISTS FUNCTION
 Returns true if a node with the value val exists in the tree
@@ -150,29 +159,35 @@ BinarySearchTree::Node** BinarySearchTree::getRootNodeAddress() {
 /*Inserts the value val into the tree as a new node.
 Returns false if val already exists in the tree, and true otherwise.*/
 bool BinarySearchTree::insert(DataType val) {
-    Node *newNode = new Node();
-    root_ = getRootNode();
+    Node *newNode = new Node(value);
 
-    if (root_ == NULL) {
+    if (root_ == nullptr) {
         root_ = newNode;
         return true;
     }
 
     Node* curr = root_;
-    while (curr) {
+    while (curr != nullptr) {
+        // Go left
         if (val < curr->data) {
+            // there is nothing to the left
             if (!curr->left) {
                 curr->left = newNode;
                 return true;
             }
+            // else go left
             curr = curr->left;
-        } else if (data > curr->data) {
+        } 
+        // going to the right, data is larger
+        else if (data > curr->data) {
             if (!curr->right) {
                 curr->right = newNode;
                 return true;
             }
+            // else keep going right
             curr = curr->right;
-        } else {
+        } 
+        else {
             // Node with value already exists in the tree
             delete newNode;
             newNode = nullptr; 
@@ -181,21 +196,6 @@ bool BinarySearchTree::insert(DataType val) {
     }
 }
 
-
-// Insert function definition.
-BST* BST ::Insert(BST* root, int value){
-    if (root == NULL) {
-        return true;
-    } else if (value < root->data) {
-        return insertHelper(root->left, value);
-    } else if (value > root->data) {
-        return insertHelper(root->right, value);
-    } else {
-        return false; // Node with value already exists in the tree
-    }
-}
-
-
 // Removes the node with the value val from the tree. Returns true if successful, and false otherwise.
 /*Removes the node with the value `val` from the tree.
 Returns true if successful, and false otherwise. 
@@ -203,36 +203,39 @@ Returns true if successful, and false otherwise.
 Note: when the to-be-removed node has two child nodes, replace the value with the predecessor (rather than successor).
 This implementation will be different from the demo code used in the lecture, which used the successor.*/
 bool BinarySearchTree::remove(DataType val) {
+    // nothing there
     if (root_ == nullptr){
-        return false;
+        return false; 
     }
 
-    else if (val < root_->data){
-        root_->left = removeNode(root_->left, val);
-    } 
-    
-    else if (val > root_->data){
-        root_->right = removeNode(root_->right, val);
-    } 
-    
-    else {
-        if (!root_->left){
-            Node* temp = root_->right;
-            delete root_;
-            return temp;
-        } 
-        else if (!root_->right){
-            Node* temp = root_->left;
-            delete node;
-            return temp;
-        } 
-        else{
-            Node* minNode = findMinNode(root_->right);
-            root_->data = minNode->data;
-            root_->right = removeNode(root_->right, minNode->data);
+    Node* curr = root_; 
+    while (curr != nullptr){
+        if (val < curr->val){
+            curr = curr->left; 
         }
+        else if (val > curr->val){
+            curr = curr->right; 
+        }
+        // when value is found
+        else{
+            Node* found = curr; 
+            // passing through to the left all the way down
+            Node* parent = curr;
+            curr = curr->left; 
+            while (curr->right != nullptr) {
+                parent = curr;
+                curr = curr->right;
+            }
+            // removing the correct value and replacing it with the highest value on the left side    
+            found->val = curr->val; 
+            // if there are other left values, bring them with 
+            parent->right = curr->left;
+            delete curr; 
+            curr = nullptr;   
+            return true; 
     }
-    return true;
+    // wasnt in tree
+    return false; 
 }
 
 /*OPTIONAL. This function is not necessary for
