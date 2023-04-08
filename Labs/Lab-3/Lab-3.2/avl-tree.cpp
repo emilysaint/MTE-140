@@ -58,7 +58,7 @@ bool AVLTree::insert(DataType val) {
 }
 
 //ptr to a ptr to hange root, nothing changes for N
-bool AVL_Insert(AVLTreeNode **pT, AVLTreeNode *N){
+bool AVL_Insert(AVLTree::Node **pT, AVLTree::Node *N){
     //Use the regular BST Insert operation, insert new Node N.
 
     bool result = BinarySearchTree::insert(pT, N);
@@ -68,16 +68,16 @@ bool AVL_Insert(AVLTreeNode **pT, AVLTreeNode *N){
     //Find out if any of Ns ancestors is unbalanced. If not, job done and return.
     //If so, find out the pointer to the unbalanced ancestor that is closest to N.
 
-    AVLTreeNode *root_; //??
+    AVLTree *root_; //??
     root_ = *pT;
 
     //special case, if N is inserted at the root node, nothing unbalanced, just return.
     if(root->val == N->val) return true;
 
-    AVLTreeNode *temp; //??
+    AVLTree *temp; //??
     temp = root_;
-    AVLTreeNode *temp_parent;
-    AVLTreeNode *alpha = NULL;
+    AVLTree *temp_parent;
+    AVLTree *alpha = NULL;
 
     do{
         temp_parent = temp;
@@ -152,13 +152,13 @@ bool AVLTree::remove(DataType val) {
 
 
 // REMOVE HELPER FUNCTION
-bool removeHelper(AVLTreeNode **pT, int K){
-    AVLTreeNode *T;
+bool removeHelper(AVLTree::Node **pT, int K){
+    AVLTree *T;
     T = *pT;
 
     //Find D in T (similar to Search)
-    AVLTreeNode* curr = T;
-    AVLTreeNode* parent = NULL;
+    AVLTree* curr = T;
+    AVLTree* parent = NULL;
     bool isLeftChild = false;
     bool found = false;
     while (curr != NULL) {
@@ -217,10 +217,10 @@ bool removeHelper(AVLTreeNode **pT, int K){
     if(curr->left != NULL && curr->right != NULL ){
         //Successor is the smallest val in the right subtree
         //find successor
-        AVLTreeNode *successor = curr->right;
+        AVLTree *successor = curr->right;
         isLeftChild = false;  // at the first step, successor is the right child of its parent.
 
-        AVLTreeNode *successor_parent = curr;
+        AVLTree *successor_parent = curr;
 
         while(successor->left != NULL){
             successor_parent = successor;
@@ -252,10 +252,10 @@ bool removeHelper(AVLTreeNode **pT, int K){
 }
 
 // SINGLE LEFT ROTATION FUNCTION
-void SingleLeftRotation (AVLTreeNode **pT, AVLTreeNode *alpha){
+void SingleLeftRotation (AVLTree::Node **pT, AVLTree::Node *alpha){
     //Input is alpha
     //A is alpha's right
-    AVLTreeNode *A = alpha->right;
+    AVLTree *A = alpha->right;
 
     //alphas right = A's left
     alpha->right = A->left;
@@ -272,8 +272,8 @@ void SingleLeftRotation (AVLTreeNode **pT, AVLTreeNode *alpha){
         //Let alpha's parent take A as the new child.
 
         //find 	alphas parent
-        AVLTreeNode *temp = *pT;
-        AVLTreeNode **parentPointerToAlpha = NULL;
+        AVLTree *temp = *pT;
+        AVLTree **parentPointerToAlpha = NULL;
         do{
             if(alpha->val > temp->val){
                 parentPointerToAlpha = &temp->right;
@@ -290,10 +290,10 @@ void SingleLeftRotation (AVLTreeNode **pT, AVLTreeNode *alpha){
 }
 
 // SINGLE RIGHT ROTATION FUNCTION
-void SingleRightRotation (AVLTreeNode **pT, AVLTreeNode *alpha){
+void SingleRightRotation (AVLTree::Node **pT, AVLTree::Node *alpha){
     //Input is alpha
     //A is alpha's left
-    AVLTreeNode *A = alpha->left;
+    AVLTree *A = alpha->left;
 
     //alphas left = A's right
     alpha->left = A->right;
@@ -309,8 +309,8 @@ void SingleRightRotation (AVLTreeNode **pT, AVLTreeNode *alpha){
         //Let alpha's parent take A as the new child.
 
         //find 	alphas parent
-        AVLTreeNode *temp = *pT;
-        AVLTreeNode **parentPointerToAlpha = NULL;
+        AVLTree *temp = *pT;
+        AVLTree **parentPointerToAlpha = NULL;
         do{
             if(alpha->val > temp->val){
                 parentPointerToAlpha = &temp->right
@@ -326,11 +326,11 @@ void SingleRightRotation (AVLTreeNode **pT, AVLTreeNode *alpha){
 }
 
 // RIGHT LEFT ROTATION FUNCTION
-void RightLeftRotation (AVLTreeNode **pT, AVLTreeNode *alpha){
+void RightLeftRotation (AVLTree::Node **pT, AVLTree::Node *alpha){
     //Input is alpha
 
     //A is alpha's right
-    AVLTreeNode *A = alpha->right;
+    AVLTree *A = alpha->right;
 
     //B is A's left
 
@@ -342,11 +342,11 @@ void RightLeftRotation (AVLTreeNode **pT, AVLTreeNode *alpha){
 }
 
 // LEFT RIGHT ROTATION FUNCTION
-void LeftRightRotation (AVLTreeNode **pT, AVLTreeNode *alpha){
+void LeftRightRotation (AVLTree::Node **pT, AVLTree::Node *alpha){
     //Input is alpha
 
     //A is alpha's left
-    AVLTreeNode *A = alpha->left;
+    AVLTree *A = alpha->left;
 
     //B is A's right
 
@@ -358,7 +358,7 @@ void LeftRightRotation (AVLTreeNode **pT, AVLTreeNode *alpha){
 }
 
 // HEIGHT FUNCTION
-int Height(AVLTreeNode *T){
+int Height(AVLTree::Node *T){
     if(T == NULL){
         return -1;
     }
@@ -372,8 +372,8 @@ int Height(AVLTreeNode *T){
 
 // SEARCH FUNCTION
 // Itterative
-string Search(AVLTreeNode* T, int K){
-    AVLTreeNode* curr = T;
+string Search(AVLTree::Node* T, int K){
+    AVLTree* curr = T;
 
     while (curr != NULL) {
         if (curr->val == K){
